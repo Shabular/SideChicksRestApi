@@ -11,6 +11,6 @@ public class ApplicationDbContext : DbContext
     {
     }
     
-    public DbSet<Show> Shows { get; set; }
+    public DbSet<Show>? Shows { get; set; }
     
 }
