@@ -5,8 +5,11 @@ namespace TheSideChicks.View;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    public MainPage(ShowsViewModel viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
+
+
     }
 }

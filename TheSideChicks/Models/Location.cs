@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheSideChicks.Models
 {
-    internal class Location
+    public class Location
     {
         public int Id { get; set; }
         public string VenueName { get; set; }

@@ -1,4 +1,5 @@
-﻿using TheSideChicks.View;
+﻿using TheSideChicks.Services;
+using TheSideChicks.View;
 
 namespace TheSideChicks;
 
@@ -15,6 +16,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		//register together
+		builder.Services.AddSingleton<ShowService>();
+		builder.Services.AddSingleton<ShowsViewModel>();
         builder.Services.AddSingleton<MainPage>();
 
         return builder.Build();

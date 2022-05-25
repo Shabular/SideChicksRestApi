@@ -3,38 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TheSideChicks.View.MainPage"
              xmlns:model="clr-namespace:TheSideChicks.Models"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             x:DataType="viewmodel:ShowsViewModel"
              Title="{Binding Title}">
 
-    <CollectionView>
-        <CollectionView.ItemsSource>
-            <x:Array Type="{x:Type model:Show}">
-                <model:Show 
-                    Name="Pieters Pret Paleis"
-                    Image="https://images.alphacoders.com/538/53823.jpg"/>
-                <model:Show 
-                    Name="Super gave rockbar"
-                    Image="https://images.alphacoders.com/538/53823.jpg"/>
-                <model:Show Name="De klomp"
-                    Image="https://images.alphacoders.com/538/53823.jpg"/>
-            </x:Array>
-        </CollectionView.ItemsSource>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:Show" >
-                <HorizontalStackLayout Padding="5" Spacing="4" VerticalOptions="Center">
-                    <Image Source="{Binding Image}"
-                           HeightRequest="100"
-                           WidthRequest="100"/>
-                    <Label VerticalOptions="Center">
-                        <Label.Text>
-                            <MultiBinding StringFormat="{}{0} | {1}">
-                                <Binding Path="Name"/>
-                                <Binding Path="Name"/>
-                            </MultiBinding>
-                        </Label.Text>
-                    </Label>
-                </HorizontalStackLayout>
-            </DataTemplate>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+        <CollectionView Background="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Shows}"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Show">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125">
+                            <Label Text="{Binding Name}"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            
         </CollectionView.ItemTemplate>
-    </CollectionView>
+        </CollectionView>
+
+        <Button Text="Get Shows"
+                Command="{Binding GetShowsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Margin="8"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
 
 </ContentPage>
