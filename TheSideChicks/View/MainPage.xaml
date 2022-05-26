@@ -7,32 +7,40 @@
              x:DataType="viewmodel:ShowsViewModel"
              Title="{Binding Title}">
 
-    <Grid ColumnDefinitions="*,*"
-          ColumnSpacing="5"
-          RowDefinitions="*,Auto"
-          RowSpacing="0">
-        <CollectionView Background="Transparent"
-                        Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Shows}"
-                        SelectionMode="None">
-
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding Shows}"
+            SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Show">
                     <Grid Padding="10">
-                        <Frame HeightRequest="125">
-                            <Label Text="{Binding Name}"/>
+                        <Frame HeightRequest="125" >
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
+                                   
+                                </VerticalStackLayout>
+                            </Grid>
                         </Frame>
                     </Grid>
                 </DataTemplate>
-            
-        </CollectionView.ItemTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Get Shows"
+        <Button Text="Get Shows" 
                 Command="{Binding GetShowsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
+                Grid.Column="0"
                 Margin="8"/>
+
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
@@ -40,7 +48,5 @@
                            VerticalOptions="CenterAndExpand"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="2"/>
-
     </Grid>
-
 </ContentPage>

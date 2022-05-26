@@ -32,7 +32,7 @@ namespace TheSideChicks.ViewModels
                 if (Shows.Count != 0)
                     Shows.Clear();
 
-                foreach (var show in Shows)
+                foreach (var show in shows)
                     Shows.Add(show);
             }
             catch (Exception ex)

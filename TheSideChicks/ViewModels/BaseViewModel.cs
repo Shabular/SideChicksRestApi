@@ -10,10 +10,7 @@ namespace TheSideChicks.ViewModels
 {
     public partial class BaseViewModel : ObservableObject
     {
-        public BaseViewModel()
-        {
 
-        }
         [ObservableProperty]
         [AlsoNotifyChangeFor(nameof(IsNotBusy))]
         bool isBusy;
