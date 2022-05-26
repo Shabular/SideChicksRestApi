@@ -8,19 +8,18 @@ namespace TheSideChicks.Models
 {
     public class Location
     {
-        public int Id { get; set; }
-        public string VenueName { get; set; }
-        public string Name { get; set; }
-        public string Street { get; set; }
-        public int Number { get; set; }
-        public string PostalNumber { get; set; }
-        public int PhoneNumber { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string owner { get; set; }
+        public string street { get; set; }
+        public int number { get; set; }
+        public string postalnumber{ get; set; }
+        public int phonenumber { get; set; }
         public string email { get; set; }
-        public DateTime DateFrom { get; set; }
-        public DateTime DateUntill { get; set; }
-        public double Fee { get; set; }
-        public string Photo { get; set; }
 
+        public void SetPropperty(string prop, string val)
+        {
 
+        }
     }
 }

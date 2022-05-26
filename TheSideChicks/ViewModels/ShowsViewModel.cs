@@ -25,41 +25,6 @@ namespace TheSideChicks.ViewModels
         }
 
         [ICommand]
-        async Task GetClosestShowAsync()
-        {
-            if (IsBusy || Shows.Count == 0)
-                return;
-
-            try
-            {
-                var location = await geolocation.GetLastKnownLocationAsync();
-                if (location == null)
-                {
-                    location = await geolocation.GetLocationAsync(
-                        new GeolocationRequest
-                        {
-                            DesiredAccuracy = GeolocationAccuracy.Medium,
-                            Timeout = TimeSpan.FromSeconds(30),
-                        });
-                }
-                
-                if (location == null)
-                    return;
-
-                var first = Shows.OrderBy(s => location.CalculateDistance(s.latitude, s.longitude, DistanceUnits.Kilometers).FirstOrDefault());
-                if (first == null)
-                    return;
-
-                await Shell.Current.DisplayAlert("Clossest show", $"{first.Name} ar {first.Id}", "OK");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("not found", $"Closest show could not be found", "OK");
-            }
-        }
-
-        [ICommand]
         async Task GoToShowDetails(Show show)
         {
             if (connectivity.NetworkAccess != NetworkAccess.Internet)
@@ -77,6 +42,20 @@ namespace TheSideChicks.ViewModels
                 {
                     { "Show", show }
                 });
+        }
+        
+        [ICommand]
+        async Task GoBookUsAsync()
+        {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                return;
+            }
+
+            await Shell.Current.GoToAsync(nameof(BookUsPage));
+               
         }
 
         [ICommand]
@@ -106,6 +85,7 @@ namespace TheSideChicks.ViewModels
                 IsBusy = false;
             }
         }
+
     
     
     }

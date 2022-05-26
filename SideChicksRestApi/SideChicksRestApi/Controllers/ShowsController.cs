@@ -31,7 +31,7 @@ namespace SideChicksRestApi.Controllers
         }
 
         // GET: api/Shows/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetShow")]
         public async Task<IActionResult> Get(int id)
         {
             var show = await _context.Shows.FindAsync(id);
@@ -40,7 +40,7 @@ namespace SideChicksRestApi.Controllers
 
         // POST: api/Shows
         [HttpPost]
-        public async Task<Show> Create(string name, string image)
+        public async Task<Show> Create(string name, string image, double fee, int id)
         {
 
             var show = new Show()
@@ -48,6 +48,8 @@ namespace SideChicksRestApi.Controllers
         
                 Name = name,
                 Image = image,
+                Fee = fee,
+                LocationId = id,
                 Date = DateTime.Now,
                 Accepted = true,
                 

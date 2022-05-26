@@ -23,12 +23,15 @@ public static class MauiProgram
 
 		//register together
 		builder.Services.AddSingleton<ShowService>();
+		builder.Services.AddSingleton<LocationService>();
 
 		builder.Services.AddSingleton<ShowsViewModel>();
+		builder.Services.AddSingleton<BookingViewModel>();
 		builder.Services.AddTransient<ShowDetailsViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<ShowDetailsPage>();
+        builder.Services.AddTransient<BookUsPage>();
 
         return builder.Build();
 	}

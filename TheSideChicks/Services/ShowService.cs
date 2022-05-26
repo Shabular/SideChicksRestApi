@@ -35,5 +35,19 @@ namespace TheSideChicks.Services
             return showList;
         }
 
+        public async Task<List<Show>> AddShowAsync(Show show)
+        {
+
+            
+            var response = await httpClient.PostAsJsonAsync(Url, show);
+
+            if (response.IsSuccessStatusCode)
+            {
+                showList = await response.Content.ReadFromJsonAsync<List<Show>>();
+            }
+
+            return showList;
+        }
+
     }
 }

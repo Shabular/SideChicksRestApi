@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheSideChicks.View.BookUsPage"
+             xmlns:local="clr-namespace:TheSideChicks"
+             x:DataType="viewmodel:BookingViewModel"
+             xmlns:model="clr-namespace:TheSideChicks.Models"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             Title="{Binding Title}">
+    <Grid
+        
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <ScrollView >
+            <VerticalStackLayout Padding="60">
+                <Entry Placeholder="Venue name"
+                       Text="{Binding venueName}"
+                       />
+                <Label Text="{Binding venueName}"/>
+
+                <Entry Placeholder="Show name"
+                       Text="{Binding showName}"/>
+                <Label Text="{Binding showName}"/>
+
+                <Entry Placeholder="Who is booking"
+                       Text="{Binding locationOwnerName}"/>
+                <Label Text="{Binding locationOwnerName}"/>
+
+                <Entry Placeholder="Street"
+                       Text="{Binding street}"/>
+                <Label Text="{Binding street}"/>
+
+                <Entry Placeholder="Number"
+                       Text="{Binding number}"/>
+                <Label Text="{Binding number}"/>
+
+                <Entry Placeholder="postal number"
+                       Text="{Binding postalNumber}"/>
+                <Label Text="{Binding postalNumber}"/>
+
+                <Entry Placeholder="phone number"
+                       Text="{Binding phoneNumber}"/>
+                <Label Text="{Binding phoneNumber}"/>
+
+                <Entry Placeholder="email"
+                       Text="{Binding email}"/>
+                <Label Text="{Binding email}"/>
+
+                <Entry Placeholder="Place link to epic party at your venue"
+                       Text="{Binding image}"/>
+                <Label Text="{Binding image}"/>
+
+                <Entry Placeholder="Whats it worth"
+                       Text="{Binding fee}"/>
+                <Label Text="{Binding fee}"/>
+
+                <Button Text="Post Booking" 
+                Command="{Binding AddShow}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+            </VerticalStackLayout>
+
+
+        </ScrollView>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+    </Grid>
+</ContentPage>
