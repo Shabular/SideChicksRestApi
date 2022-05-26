@@ -50,13 +50,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\Shows.xaml.cs">
-	    <DependentUpon>Shows.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="View\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\ShowDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Shows.xaml">

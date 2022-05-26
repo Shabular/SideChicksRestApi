@@ -40,13 +40,14 @@ namespace SideChicksRestApi.Controllers
 
         // POST: api/Shows
         [HttpPost]
-        public async Task<Show> Create(string name)
+        public async Task<Show> Create(string name, string image)
         {
 
             var show = new Show()
             {
         
                 Name = name,
+                Image = image,
                 Date = DateTime.Now,
                 Accepted = true,
                 

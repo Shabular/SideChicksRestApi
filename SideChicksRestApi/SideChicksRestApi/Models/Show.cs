@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace SideChicksRestApi.Models;
 
@@ -7,6 +8,11 @@ public class Show
 {
     public int Id { get; set; }
     public string Name { get; set; }
+    public string Image { get; set; }
+    public double Fee { get; set; }
+    [ForeignKey("LocationId")]
+    public Location Location { get; set; } = null!;
     public DateTime Date { get; set; }
     public bool Accepted {get; set; }
+    
 }

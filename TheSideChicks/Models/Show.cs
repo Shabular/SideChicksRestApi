@@ -10,6 +10,7 @@ namespace TheSideChicks.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Image { get; set; }
 /*        
         public Location Location { get; set; }
         public Band Band { get; set; }*/
