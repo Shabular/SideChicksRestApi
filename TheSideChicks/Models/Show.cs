@@ -9,13 +9,13 @@ namespace TheSideChicks.Models
     public class Show
     {
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Image { get; set; }
-        public int LocationId { get; set; }
-        public double Fee { get; set; }
-        public DateTime Date{ get; set; }
-        public bool Accepted { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string image { get; set; }
+        public int locationId { get; set; }
+        public double fee { get; set; }
+        public DateTime date{ get; set; }
+        public bool accepted { get; set; }
 
     }
 }

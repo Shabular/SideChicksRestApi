@@ -27,14 +27,14 @@
                             </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill"
-                                       Source="{Binding Image}"
+                                       Source="{Binding image}"
                                        WidthRequest="125"
                                        HeightRequest="125"/>
                                 <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
-                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Id}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding id}" />
                                    
                                 </VerticalStackLayout>
                             </Grid>

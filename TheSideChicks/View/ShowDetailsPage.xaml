@@ -31,12 +31,12 @@
                            WidthRequest="160"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           Source="{Binding Show.Image}"/>
+                           Source="{Binding Show.image}"/>
                 </Frame>
             </Grid>
 
             <VerticalStackLayout Padding="20" Spacing="10">
-                <Label Text="{Binding Show.Name, StringFormat='Venue: {0}'}"
+                <Label Text="{Binding Show.name, StringFormat='Venue: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
             </VerticalStackLayout>
                                  

@@ -41,7 +41,7 @@ namespace TheSideChicks.ViewModels
 /*
             var show = new Show
             {
-                Name = showName,
+                name = showName,
                 Image = image,
                 Date = date,
                 Fee =fee,
@@ -84,19 +84,25 @@ namespace TheSideChicks.ViewModels
 
             var show = new Show
             {
-                Name = showName,
-                Image = image,
-                Date = date,
-                Fee = fee,
-                Accepted = true
+                name = showName,
+                image = image,
+                date = date,
+                fee = fee,
+                accepted = true
             };
 
             
-            var addenLocation = await locationService.AddLocation(location);
-            var addenShow = await showService.AddShowAsync(show);
+            // check if location already exists, if not add location
+            var addedLocation = await locationService.AddLocation(location);
+            if (addedLocation is null)
+            {
+                addedLocation = await locationService.GetLocationByPostalNumber(location.postalnumber);
+            }
+            show.locationId = addedLocation.id;
+            // add location id to show and add show
+            var addedShow = await showService.AddShowAsync(show);
             return;
-            //var addenLocation = await locationService.AddLocation(location);
-            //var addeShow = await showService.AddShowAsync(show);
+
         }
     }
 }

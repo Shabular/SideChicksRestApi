@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
 using Location = TheSideChicks.Models.Location;
+using TheSideChicks.Helpers;
 
 namespace TheSideChicks.Services
 {
     public class LocationService
     {
         HttpClient httpClient;
-        string Url = "https://localhost:7126/api/Locations";
+
+        static string BaseUrl = DeviceInfoHelper.BaseUrl;
+        string Url = $"{BaseUrl}/api/Locations";
+        //string Url = "https://localhost:7126/api/Locations";
         public LocationService()
         {
             httpClient = new HttpClient();
@@ -22,7 +26,7 @@ namespace TheSideChicks.Services
         public async Task<List<Location>> GetLocations()
         {
             if (locationList?.Count > 0)
-                return locationList;
+                locationList = new List<Location>();
 
             var url = Url;
 
@@ -36,17 +40,37 @@ namespace TheSideChicks.Services
             return locationList;
         }
 
-
-        public async Task<List<Location>> AddLocation(Location location)
+        public async Task<Location> GetLocationById(int id)
         {
-            var response = await httpClient.PostAsJsonAsync(Url, location);
+            var url = $"{Url}/{id}";
+
+            var response = await httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
                 locationList = await response.Content.ReadFromJsonAsync<List<Location>>();
             }
+            var location = locationList?.Find(l => l.id == id);
+            return location;
+        }
 
-            return locationList;
+
+        public async Task<Location> AddLocation(Location location)
+        {
+            var existingLocationList = await GetLocations();
+
+            var locationExists = existingLocationList.Find(l => l.postalnumber == location.postalnumber);
+            if (locationExists != null)
+                return locationExists;
+
+            var response = await httpClient.PostAsJsonAsync(Url, location);
+
+            if (response.IsSuccessStatusCode)
+            {
+                locationList = await GetLocations();
+            }
+            var createdLocation = locationList.Find(l => l.postalnumber == location.postalnumber);
+            return createdLocation;
         }
 
         async Task RemoveLocation(int id)
@@ -54,5 +78,16 @@ namespace TheSideChicks.Services
             var response = await httpClient.DeleteAsync($"{Url}/{id}");
         }
 
+        public async Task<Location> GetLocationByPostalNumber(string postalnumber)
+        {
+            var existingLocationList = new List<Location>();
+            existingLocationList = await GetLocations();
+
+            var locationExists = existingLocationList.Find(l => l.postalnumber == postalnumber);
+            if (locationExists != null)
+                return locationExists;
+            else
+                return null;
+        }
     }
 }

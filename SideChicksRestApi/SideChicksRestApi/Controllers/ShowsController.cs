@@ -40,20 +40,8 @@ namespace SideChicksRestApi.Controllers
 
         // POST: api/Shows
         [HttpPost]
-        public async Task<Show> Create(string name, string image, double fee, int id)
+        public async Task<Show> Create(Show show)
         {
-
-            var show = new Show()
-            {
-        
-                Name = name,
-                Image = image,
-                Fee = fee,
-                LocationId = id,
-                Date = DateTime.Now,
-                Accepted = true,
-                
-            };
             
             _context.Add(show);
             await _context.SaveChangesAsync();
