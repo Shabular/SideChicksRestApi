@@ -13,5 +13,6 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<Show>? Shows { get; set; }
     public DbSet<Location> Locations { get; set; }
+    public DbSet<User> Users { get; set; }
     
 }

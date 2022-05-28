@@ -61,6 +61,14 @@
                 Grid.Column="1"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
+        
+        <Button Text="Administration" 
+                Command="{Binding GoLoginCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
 
 
 

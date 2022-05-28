@@ -69,6 +69,20 @@ namespace TheSideChicks.ViewModels
         }
 
         [ICommand]
+        async Task GoLoginAsync()
+        {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                return;
+            }
+
+            await Shell.Current.GoToAsync(nameof(LoginPage));
+
+        }
+
+        [ICommand]
         async Task GetShowsAsync()
         {
             if(IsBusy)
