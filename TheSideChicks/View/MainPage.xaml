@@ -33,8 +33,10 @@
                                 <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
+                                    <Label Style="{StaticResource LargeLabel}" Text="Show name" />
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
-                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding id}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="Date" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding date}" />
                                    
                                 </VerticalStackLayout>
                             </Grid>

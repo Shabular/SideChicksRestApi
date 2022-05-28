@@ -23,9 +23,6 @@ namespace TheSideChicks.Services
 
         public async Task<List<Show>> GetShows()
         {
-            if (showList?.Count > 0)
-                return showList;
-
 
             var response = await httpClient.GetAsync(Url);  
 
@@ -51,16 +48,16 @@ namespace TheSideChicks.Services
             return show;
         }
 
-        public async Task<List<Show>> AddShowAsync(Show show)
+        public async Task<Show> AddShowAsync(Show show)
         {
             var response = await httpClient.PostAsJsonAsync(Url, show);
 
             if (response.IsSuccessStatusCode)
             {
-                showList = await response.Content.ReadFromJsonAsync<List<Show>>();
+                showList = await GetShows();
             }
 
-            return showList;
+            return show;
         }
 
     }

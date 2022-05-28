@@ -14,7 +14,7 @@ namespace TheSideChicks.Services
         HttpClient httpClient;
 
         static string BaseUrl = DeviceInfoHelper.BaseUrl;
-        string Url = $"{BaseUrl}/api/Locations";
+        string Url = $"{BaseUrl}/Locations";
         //string Url = "https://localhost:7126/api/Locations";
         public LocationService()
         {
@@ -44,11 +44,16 @@ namespace TheSideChicks.Services
         {
             var url = $"{Url}/{id}";
 
+            if (locationList?.Count > 0)
+                locationList = new List<Location>();
+
+
             var response = await httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
-                locationList = await response.Content.ReadFromJsonAsync<List<Location>>();
+                locationList = await GetLocations();
+         
             }
             var location = locationList?.Find(l => l.id == id);
             return location;
@@ -59,7 +64,7 @@ namespace TheSideChicks.Services
         {
             var existingLocationList = await GetLocations();
 
-            var locationExists = existingLocationList.Find(l => l.postalnumber == location.postalnumber);
+            var locationExists = existingLocationList.Find(l => l.postalNumber == location.postalNumber);
             if (locationExists != null)
                 return locationExists;
 
@@ -69,7 +74,7 @@ namespace TheSideChicks.Services
             {
                 locationList = await GetLocations();
             }
-            var createdLocation = locationList.Find(l => l.postalnumber == location.postalnumber);
+            var createdLocation = locationList.Find(l => l.postalNumber == location.postalNumber);
             return createdLocation;
         }
 
@@ -78,12 +83,12 @@ namespace TheSideChicks.Services
             var response = await httpClient.DeleteAsync($"{Url}/{id}");
         }
 
-        public async Task<Location> GetLocationByPostalNumber(string postalnumber)
+        public async Task<Location> GetLocationByPostalNumber(string postalNumber)
         {
             var existingLocationList = new List<Location>();
             existingLocationList = await GetLocations();
 
-            var locationExists = existingLocationList.Find(l => l.postalnumber == postalnumber);
+            var locationExists = existingLocationList.Find(l => l.postalNumber == postalNumber);
             if (locationExists != null)
                 return locationExists;
             else

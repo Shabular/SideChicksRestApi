@@ -11,50 +11,64 @@
         
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
-        RowDefinitions="*,Auto"
+        RowDefinitions="200,*,Auto"
         RowSpacing="0">
-        <ScrollView >
-            <VerticalStackLayout Padding="60">
+        <Image Aspect="Fill"
+               HeightRequest="150"
+               WidthRequest="200"
+               Grid.Column="0"
+               Grid.Row="0"
+                Source="sidechicks.PNG"
+            
+                                       />
+        <ScrollView Grid.Column="0"
+                    Grid.Row="1">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="Venue name"/>
                 <Entry Placeholder="Venue name"
                        Text="{Binding venueName}"
                        />
-                <Label Text="{Binding venueName}"/>
 
+                <Label Text="Event name"/>
                 <Entry Placeholder="Show name"
                        Text="{Binding showName}"/>
-                <Label Text="{Binding showName}"/>
 
+                <Label Text="Your name"/>
                 <Entry Placeholder="Who is booking"
                        Text="{Binding locationOwnerName}"/>
-                <Label Text="{Binding locationOwnerName}"/>
 
-                <Entry Placeholder="Street"
-                       Text="{Binding street}"/>
-                <Label Text="{Binding street}"/>
-
-                <Entry Placeholder="Number"
-                       Text="{Binding number}"/>
-                <Label Text="{Binding number}"/>
-
+                <VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Street"/>
+                        <Entry Placeholder="Street"
+                                Text="{Binding street}"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="number"/>
+                        <Entry Placeholder="3"
+                            Text="{Binding number}"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+                
+                <Label Text="Postal Code"/>
                 <Entry Placeholder="postal number"
                        Text="{Binding postalNumber}"/>
-                <Label Text="{Binding postalNumber}"/>
 
-                <Entry Placeholder="phone number"
+                <Label Text="Phone number"/>
+                <Entry Placeholder="+31654567898"
                        Text="{Binding phoneNumber}"/>
-                <Label Text="{Binding phoneNumber}"/>
 
-                <Entry Placeholder="email"
+                <Label Text="Email"/>
+                <Entry Placeholder="Henk@hotmail.com"
                        Text="{Binding email}"/>
-                <Label Text="{Binding email}"/>
 
+                <Label Text="Image Link"/>
                 <Entry Placeholder="Place link to epic party at your venue"
                        Text="{Binding image}"/>
-                <Label Text="{Binding image}"/>
 
-                <Entry Placeholder="Whats it worth"
+                <Label Text="Give us an offer we cant refuse"/>
+                <Entry Placeholder="390.27"
                        Text="{Binding fee}"/>
-                <Label Text="{Binding fee}"/>
 
                 <Button Text="Post Booking" 
                 Command="{Binding AddShow}"
@@ -66,8 +80,25 @@
 
             </VerticalStackLayout>
 
+        </ScrollView>
+        <ScrollView Grid.Column="1"
+                    Grid.RowSpan="2">
+
+            <VerticalStackLayout    Padding="10">
+
+                <Label Text="Tell the world about your venue or event"/>
+
+                <Entry Placeholder="Tell the visitors aubout your event"
+                               WidthRequest="300"
+                               HeightRequest="600"
+                               Text="{Binding details}"/>
+                
+            </VerticalStackLayout>
 
         </ScrollView>
+
+
+        
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
@@ -75,5 +106,7 @@
                            VerticalOptions="CenterAndExpand"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="2"/>
+
     </Grid>
+    
 </ContentPage>

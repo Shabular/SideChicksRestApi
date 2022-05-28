@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheSideChicks.ViewModels
 {
-    [QueryProperty("Show", "Show")]
+    [QueryProperty("ShowTime", "ShowTime")]
     public partial class ShowDetailsViewModel : BaseViewModel
     {
         public ShowDetailsViewModel()
@@ -15,7 +15,7 @@ namespace TheSideChicks.ViewModels
         }
 
         [ObservableProperty]
-        Show show;
+        ShowTime showTime;
 
         [ICommand]
         async Task GoBack()

@@ -7,16 +7,16 @@
              Shell.PresentationMode="ModalAnimated"
              Title="{Binding Title}">
 
-
     <ScrollView>
-        <VerticalStackLayout>
-            <Grid ColumnDefinitions="*,Auto,*"
-                  RowDefinitions="160, Auto">
-                <BoxView BackgroundColor="{StaticResource Primary}"
+            <VerticalStackLayout>
+                <Grid ColumnDefinitions="*,Auto,*"
+                      Grid.Row="1"
+                      RowDefinitions="160, Auto">
+                    <BoxView BackgroundColor="{StaticResource Primary}"
                          Grid.ColumnSpan="3"
                          HeightRequest="160"
                          HorizontalOptions="FillAndExpand"/>
-                <Frame Grid.RowSpan="2"
+                    <Frame Grid.RowSpan="2"
                        Grid.Column="1"
                        HeightRequest="160"
                        WidthRequest="160"
@@ -26,20 +26,57 @@
                        Padding="0"
                        Margin="0,80,0,0">
 
-                    <Image Aspect="AspectFill"
+                        <Image Aspect="AspectFill"
                            HeightRequest="160"
                            WidthRequest="160"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           Source="{Binding Show.image}"/>
-                </Frame>
-            </Grid>
+                           Source="{Binding ShowTime.show.image}"/>
+                    </Frame>
+                </Grid>
+            <Grid Grid.Row="2"
+                      >
+                <VerticalStackLayout Padding="5" Spacing="5" Grid.Column="0">
+                <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
 
-            <VerticalStackLayout Padding="20" Spacing="10">
-                <Label Text="{Binding Show.name, StringFormat='Venue: {0}'}"
-                       Style="{StaticResource MediumLabel}"/>
-            </VerticalStackLayout>
-                                 
+                <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.location.adress, StringFormat='Adres: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='Contactinfo {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+
         </VerticalStackLayout>
-    </ScrollView>
+                <VerticalStackLayout    Padding="1"
+                                        Grid.Column="2">
+                    <Image Aspect="Fill"
+                       HeightRequest="150"
+                       WidthRequest="200"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Source="sidechicks.PNG"
+            
+                                       />
+                    <Label WidthRequest="100"
+                               HeightRequest="600"
+                               Text="{Binding ShowTime.show.details}"/>
+
+                </VerticalStackLayout>
+            </Grid>
+                
+            
+        </VerticalStackLayout>
+        </ScrollView>
+
+
 </ContentPage>

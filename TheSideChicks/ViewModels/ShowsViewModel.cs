@@ -11,13 +11,15 @@ namespace TheSideChicks.ViewModels
     public partial class ShowsViewModel : BaseViewModel
     {
         ShowService showService;
+        LocationService locationService;
         public ObservableCollection<Show> Shows { get; } = new();
 
         IConnectivity connectivity;
         IGeolocation geolocation;
-        public ShowsViewModel(ShowService showService, IConnectivity connectivity, IGeolocation geolocation)
+        public ShowsViewModel(ShowService showService, IConnectivity connectivity, IGeolocation geolocation, LocationService locationservice)
         {
             Title = "Shows Finder";
+            this.locationService = locationservice;
             this.showService = showService;
             this.connectivity = connectivity;
             this.geolocation = geolocation;
@@ -37,10 +39,18 @@ namespace TheSideChicks.ViewModels
             if (show is null)
                 return;
 
+            ShowTime showtime = new ShowTime();
+            showtime.show = show;
+            showtime.location = await locationService.GetLocationById(show.locationId);
+            showtime.location.adress = $"{showtime.location.street} {showtime.location.number}";
+            showtime.location.contactInfo = $": email: {showtime.location.email} | phone number: {showtime.location.number}";
+            
+
             await Shell.Current.GoToAsync($"{nameof(ShowDetailsPage)}", true,
+
                 new Dictionary<string, object>
                 {
-                    { "Show", show }
+                    { "ShowTime", showtime }
                 });
         }
         

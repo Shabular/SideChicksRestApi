@@ -12,6 +12,7 @@ namespace TheSideChicks.Models
         public int id { get; set; }
         public string name { get; set; }
         public string image { get; set; }
+        public string details { get; set; }
         public int locationId { get; set; }
         public double fee { get; set; }
         public DateTime date{ get; set; }

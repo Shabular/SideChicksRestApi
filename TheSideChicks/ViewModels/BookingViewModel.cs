@@ -19,6 +19,7 @@ namespace TheSideChicks.ViewModels
         // propperty binding
         public string showName { get; set; }
         public string image { get; set; }
+        public string details{ get; set; }
         public int locationId { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
@@ -38,33 +39,11 @@ namespace TheSideChicks.ViewModels
         public BookingViewModel(ShowService showService, LocationService locationService)
         {
             Title = "Book us now";
-/*
-            var show = new Show
-            {
-                name = showName,
-                Image = image,
-                Date = date,
-                Fee =fee,
-                Accepted = false
-            };*/
 
-            /*var location = new Location
-            {
-                name = venueName,
-                owner = locationOwnerName,
-                street = street,
-                number = number,
-                PostalNumber = postalNumber,
-                phonenumber = phoneNumber,
-                email = email
-            };*/
             AddShow = new Command(AddNewBooking);
 
             this.showService = showService;
             this.locationService = locationService;
-
-            
-
 
         }
         private async void AddNewBooking()
@@ -77,8 +56,8 @@ namespace TheSideChicks.ViewModels
                 owner = locationOwnerName,
                 street = street,
                 number = number,
-                postalnumber = postalNumber,
-                phonenumber = phoneNumber,
+                postalNumber = postalNumber,
+                phoneNumber = phoneNumber,
                 email = email
             };
 
@@ -87,6 +66,7 @@ namespace TheSideChicks.ViewModels
                 name = showName,
                 image = image,
                 date = date,
+                details = details,
                 fee = fee,
                 accepted = true
             };
@@ -96,7 +76,7 @@ namespace TheSideChicks.ViewModels
             var addedLocation = await locationService.AddLocation(location);
             if (addedLocation is null)
             {
-                addedLocation = await locationService.GetLocationByPostalNumber(location.postalnumber);
+                addedLocation = await locationService.GetLocationByPostalNumber(location.postalNumber);
             }
             show.locationId = addedLocation.id;
             // add location id to show and add show
