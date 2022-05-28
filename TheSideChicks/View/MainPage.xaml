@@ -27,14 +27,16 @@
                             </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill"
-                                       Source="{Binding Image}"
+                                       Source="{Binding image}"
                                        WidthRequest="125"
                                        HeightRequest="125"/>
                                 <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
-                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Id}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="Show name" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="Date" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding date}" />
                                    
                                 </VerticalStackLayout>
                             </Grid>
@@ -52,8 +54,8 @@
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
         
-        <Button Text="Get Closest" 
-                Command="{Binding GetClosestShowCommand}"
+        <Button Text="Book us now" 
+                Command="{Binding GoBookUsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="1"

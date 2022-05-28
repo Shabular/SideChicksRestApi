@@ -12,5 +12,5 @@ public class Location
     public int Number { get; set; }
     public string PostalNumber { get; set; }
     public int PhoneNumber { get; set; }
-    public string email { get; set; }
+    public string Email { get; set; }
 }

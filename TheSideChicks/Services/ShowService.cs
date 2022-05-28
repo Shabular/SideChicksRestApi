@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
+using TheSideChicks.Helpers;
 
 namespace TheSideChicks.Services
 {
     public class ShowService
     {
         HttpClient httpClient;
-        string Url = "https://localhost:7126/api/Shows";
+        static string BaseUrl = DeviceInfoHelper.BaseUrl;
+        string Url = $"{BaseUrl}/Shows";
+
         public ShowService()
         {
             httpClient = new HttpClient();
@@ -20,12 +23,8 @@ namespace TheSideChicks.Services
 
         public async Task<List<Show>> GetShows()
         {
-            if (showList?.Count > 0)
-                return showList;
 
-            var url = Url;
-
-            var response = await httpClient.GetAsync(url);  
+            var response = await httpClient.GetAsync(Url);  
 
             if (response.IsSuccessStatusCode)
             {
@@ -33,6 +32,32 @@ namespace TheSideChicks.Services
             }
 
             return showList;
+        }
+
+        public async Task<Show> GetShowById(int id)
+        {
+            var url = $"{Url}/{id}";
+
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                showList = await response.Content.ReadFromJsonAsync<List<Show>>();
+            }
+            var show = showList.Find(s => s.id == id);
+            return show;
+        }
+
+        public async Task<Show> AddShowAsync(Show show)
+        {
+            var response = await httpClient.PostAsJsonAsync(Url, show);
+
+            if (response.IsSuccessStatusCode)
+            {
+                showList = await GetShows();
+            }
+
+            return show;
         }
 
     }

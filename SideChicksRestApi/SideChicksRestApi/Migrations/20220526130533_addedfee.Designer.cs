@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SideChicksRestApi.Data;
 
@@ -10,9 +11,10 @@ using SideChicksRestApi.Data;
 namespace SideChicksRestApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220526130533_addedfee")]
+    partial class addedfee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,10 +70,6 @@ namespace SideChicksRestApi.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<double>("Fee")
                         .HasColumnType("double");
 
@@ -88,7 +86,20 @@ namespace SideChicksRestApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LocationId");
+
                     b.ToTable("Shows");
+                });
+
+            modelBuilder.Entity("SideChicksRestApi.Models.Show", b =>
+                {
+                    b.HasOne("SideChicksRestApi.Models.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
                 });
 #pragma warning restore 612, 618
         }
