@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheSideChicks.View.LoginPage"
+             xmlns:local="clr-namespace:TheSideChicks"
+             x:DataType="viewmodel:LoginViewModel"
+             xmlns:model="clr-namespace:TheSideChicks.Models"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             Title="{Binding Title}">
+    <Grid
+        
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="200,*,Auto"
+        RowSpacing="0">
+        <Image Aspect="Fill"
+               HeightRequest="150"
+               WidthRequest="200"
+               Grid.Column="0"
+               Grid.Row="0"
+                Source="sidechicks.PNG"
+            
+                                       />
+        <ScrollView Grid.Column="0"
+                    Grid.Row="1">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="Venue name"/>
+                <Entry Placeholder="Venue name"
+                       Text="{Binding username}"
+                       />
+
+                <Label Text="Event name"/>
+                <Entry Placeholder="Show name"
+                       Text="{Binding password}"/>
+
+                <Button Text="LogIn" 
+                Command="{Binding LogIn}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+
+
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+        <ScrollView Grid.Column="1"
+                    Grid.RowSpan="2">
+
+
+        </ScrollView>
+
+
+
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
+
+</ContentPage>
