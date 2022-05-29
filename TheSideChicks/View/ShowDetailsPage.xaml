@@ -64,7 +64,7 @@
                        WidthRequest="200"
                        Grid.Column="0"
                        Grid.Row="0"
-                       Source="sidechicks.PNG"
+                       Source="{Binding bandLogo}"
             
                                        />
                     <Label WidthRequest="100"

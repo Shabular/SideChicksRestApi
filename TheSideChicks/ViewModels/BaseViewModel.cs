@@ -20,6 +20,10 @@ namespace TheSideChicks.ViewModels
 
         public bool IsNotBusy => !IsBusy;
 
-        
+        public bool? isAdmin => Preferences.Get("isAdmin", false);
+        public string bandLogo => "sidechicks.PNG";
+
+
+
     }
 }

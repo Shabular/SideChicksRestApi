@@ -8,12 +8,12 @@
              Title="{Binding Title}">
 
     <Grid
-        ColumnDefinitions="*,*"
+        ColumnDefinitions="*,*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
         <CollectionView
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             ItemsSource="{Binding Shows}"
             SelectionMode="None">
             
@@ -47,7 +47,7 @@
         </CollectionView>
 
         <Button Text="Get Shows" 
-                Command="{Binding GetShowsCommand}"
+                Command="{Binding GetAcceptedShowsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="0"
@@ -65,8 +65,8 @@
         <Button Text="Administration" 
                 Command="{Binding GoLoginCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="0"
-                Grid.Column="0"
+                Grid.Row="1"
+                Grid.Column="2"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
 

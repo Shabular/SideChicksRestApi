@@ -60,5 +60,19 @@ namespace TheSideChicks.Services
             return show;
         }
 
+        public async Task<Show> UpdateShowAsync(Show show)
+        {
+            var id = show.id;
+            var url = $"{Url}/{id}";
+            var response = await httpClient.PutAsJsonAsync(url, show);
+
+            if (response.IsSuccessStatusCode)
+            {
+                showList = await GetShows();
+            }
+
+            return show;
+        }
+
     }
 }
