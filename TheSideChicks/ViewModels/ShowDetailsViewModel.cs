@@ -73,6 +73,41 @@ namespace TheSideChicks.ViewModels
                     { "ShowTime", showtime }
                 });
         }
+        
+        [ICommand]
+        async Task DeleteBooking(Show show)
+        {
+            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                
+                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                return;
+            }*/
+            Console.Write(show);
+            if (show is null)
+            {
+                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                return;
+            }
+            show.accepted = true;
+            try
+            {
+                await showService.DeleteShowAsync(show);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Could not find show in DB", $"{show}", "OK");
+            }
+
+
+            await Shell.Current.GoToAsync($"{nameof(MembersPage)}");
+        }
+        
+        [ICommand]
+        async Task BackToMembersPage()
+        {
+            await Shell.Current.GoToAsync($"{nameof(MembersPage)}");
+        }
 
     }
 }

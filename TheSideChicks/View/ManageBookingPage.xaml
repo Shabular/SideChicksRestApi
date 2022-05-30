@@ -68,21 +68,39 @@
             
                                        />
                     <Label WidthRequest="100"
-                               HeightRequest="600"
+                               HeightRequest="200"
                                Text="{Binding ShowTime.show.details}"/>
 
                 </VerticalStackLayout>
 
-                <Button Text="Book us now" 
+                
+            </Grid>
+            <Button Text="Accept Booking" 
                 CommandParameter="{Binding ShowTime.show}"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=AcceptBookingCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
-                Grid.Column="1"
+                Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
-            </Grid>
-
+            
+            <Button Text="Delete Booking" 
+                CommandParameter="{Binding ShowTime.show}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=DeleteBookingCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="3"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+            
+            <Button Text="back to the members page" 
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=BackToMembersPageCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="3"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+            
 
         </VerticalStackLayout>
     </ScrollView>

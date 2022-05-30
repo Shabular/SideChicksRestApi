@@ -63,8 +63,12 @@ namespace SideChicksRestApi.Controllers
 
         // DELETE: api/Shows/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var show = await _context.Shows.FindAsync(id);
+            _context.Shows.Remove(show);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }

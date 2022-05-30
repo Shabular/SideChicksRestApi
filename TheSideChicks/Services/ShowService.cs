@@ -74,5 +74,18 @@ namespace TheSideChicks.Services
             return show;
         }
 
+        public async Task DeleteShowAsync(Show show)
+        {
+            var id = show.id;
+            var url = $"{Url}/{id}";
+            var response = await httpClient.DeleteAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return;
+            }
+
+        }
+
     }
 }
