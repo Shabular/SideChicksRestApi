@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheSideChicks.Services;
+using TheSideChicks.View;
 using Location = TheSideChicks.Models.Location;
 
 namespace TheSideChicks.ViewModels
@@ -24,6 +25,7 @@ namespace TheSideChicks.ViewModels
         public double latitude { get; set; }
         public double longitude { get; set; }
         public DateTime date { get; set; }
+        public DateTime minDate { get; } = DateTime.Today;
         public bool accepted { get; set; }
         public string venueName { get; set; }
         public string locationOwnerName { get; set; }
@@ -68,7 +70,7 @@ namespace TheSideChicks.ViewModels
                 date = date,
                 details = details,
                 fee = fee,
-                accepted = true
+                accepted = false
             };
 
             
@@ -81,6 +83,9 @@ namespace TheSideChicks.ViewModels
             show.locationId = addedLocation.id;
             // add location id to show and add show
             var addedShow = await showService.AddShowAsync(show);
+
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+            
             return;
 
         }

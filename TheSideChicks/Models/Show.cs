@@ -19,4 +19,6 @@ namespace TheSideChicks.Models
         public bool accepted { get; set; }
 
     }
+
+
 }

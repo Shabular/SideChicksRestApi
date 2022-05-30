@@ -29,13 +29,17 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ShowsViewModel>();
 		builder.Services.AddSingleton<BookingViewModel>();
 		builder.Services.AddTransient<ShowDetailsViewModel>();
+		builder.Services.AddTransient<ShowManagementViewModel>();
 		builder.Services.AddTransient<LoginViewModel>();
+		builder.Services.AddTransient<UserViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<ShowDetailsPage>();
         builder.Services.AddTransient<BookUsPage>();
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<MembersPage>();
+        builder.Services.AddTransient<ShowManagementPage>();
+        builder.Services.AddTransient<ManageBookingPage>();
 
         return builder.Build();
 	}

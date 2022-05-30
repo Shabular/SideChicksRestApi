@@ -12,29 +12,32 @@ namespace TheSideChicks.ViewModels
     {
         ShowService showService;
         LocationService locationService;
+        
         public ObservableCollection<Show> Shows { get; } = new();
 
-        IConnectivity connectivity;
-        IGeolocation geolocation;
-        public ShowsViewModel(ShowService showService, IConnectivity connectivity, IGeolocation geolocation, LocationService locationservice)
+
+        
+
+        //IConnectivity connectivity;
+        
+        public ShowsViewModel(ShowService showService, LocationService locationservice)
         {
             Title = "Shows Finder";
             this.locationService = locationservice;
             this.showService = showService;
-            this.connectivity = connectivity;
-            this.geolocation = geolocation;
+            //this.connectivity = connectivity;
 
         }
 
         [ICommand]
         async Task GoToShowDetails(Show show)
         {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 
                 await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
                 return;
-            }
+            }*/
 
             if (show is null)
                 return;
@@ -53,16 +56,19 @@ namespace TheSideChicks.ViewModels
                     { "ShowTime", showtime }
                 });
         }
+
+
+  
         
         [ICommand]
         async Task GoBookUsAsync()
         {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
 
                 await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
                 return;
-            }
+            }*/
 
             await Shell.Current.GoToAsync(nameof(BookUsPage));
                
@@ -71,19 +77,19 @@ namespace TheSideChicks.ViewModels
         [ICommand]
         async Task GoLoginAsync()
         {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
 
                 await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
                 return;
-            }
+            }*/
 
             await Shell.Current.GoToAsync(nameof(LoginPage));
 
         }
 
         [ICommand]
-        async Task GetShowsAsync()
+        async Task GetAcceptedShowsAsync()
         {
             if(IsBusy)
                 return;
@@ -97,7 +103,10 @@ namespace TheSideChicks.ViewModels
                     Shows.Clear();
 
                 foreach (var show in shows)
-                    Shows.Add(show);
+                    if ((show.accepted is true) & (show.date >= DateTime.Today))
+                    {
+                        Shows.Add(show);
+                    }
             }
             catch (Exception ex)
             {
@@ -110,7 +119,6 @@ namespace TheSideChicks.ViewModels
             }
         }
 
-    
-    
+        
     }
 }

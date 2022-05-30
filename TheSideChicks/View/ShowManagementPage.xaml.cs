@@ -1,13 +1,10 @@
-using TheSideChicks;
-
 namespace TheSideChicks.View;
 
-
-public partial class MainPage : ContentPage
+public partial class ShowManagementPage : ContentPage
 {
-    public MainPage(ShowsViewModel viewModel)
-    {
-        InitializeComponent();
+	public ShowManagementPage(ShowManagementViewModel viewModel)
+	{
+		InitializeComponent();
         BindingContext = viewModel;
 
 

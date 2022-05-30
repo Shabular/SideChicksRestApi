@@ -12,6 +12,9 @@ namespace TheSideChicks.ViewModels
     {
 
         UserService userService;
+        ShowService showService;
+        LocationService locationService;
+  
 
         public ObservableCollection<User> User { get; } = new();
 
@@ -26,13 +29,15 @@ namespace TheSideChicks.ViewModels
 
         public System.Windows.Input.ICommand LogIn { get; }
 
-        public LoginViewModel(UserService userService)
+        public LoginViewModel(UserService userService, ShowService showService, LocationService locationService)
         {
             Title = "Log in";
 
             LogIn = new Command(LogInAsync);
 
             this.userService = userService;
+            this.showService = showService;
+            this.locationService = locationService;
 
         }
 
@@ -48,14 +53,25 @@ namespace TheSideChicks.ViewModels
             try
             {
                 var userInDatabase = await userService.CheckIfUserInDatabase(user);
+                Preferences.Set("username", userInDatabase.username);
+                Preferences.Set("isAdmin", userInDatabase.isadmin);
+
+                UserViewModel userViewModel = new(userService, showService, locationService);
+                
 
                 // check if user already exists, if not add location
-                if (userInDatabase.isadmin.Equals(true))
+                if (Preferences.Get("isAdmin", false).Equals(true))
                 {
-                    await Shell.Current.GoToAsync(nameof(MembersPage));
+
+                    await Shell.Current.GoToAsync(nameof(MembersPage), true,
+
+                        new Dictionary<string, object>
+                        {
+                            { "UserViewModel", userViewModel }
+                        });
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 await Shell.Current.DisplayAlert("Account not allowed", $"Try other credentials if you dare", "OK");
                 return;

@@ -33,6 +33,10 @@
                 <Entry Placeholder="Show name"
                        Text="{Binding showName}"/>
 
+                <Label Text="Pick the date"/>
+                <DatePicker Date="{Binding date}"
+                            MinimumDate="{Binding minDate}"/>
+                
                 <Label Text="Your name"/>
                 <Entry Placeholder="Who is booking"
                        Text="{Binding locationOwnerName}"/>

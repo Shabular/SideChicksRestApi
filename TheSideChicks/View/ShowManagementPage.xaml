@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TheSideChicks.View.MainPage"
-             xmlns:model="clr-namespace:TheSideChicks.Models"
              xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
-             x:DataType="viewmodel:ShowsViewModel"
+             x:Class="TheSideChicks.View.ShowManagementPage"
+             xmlns:model="clr-namespace:TheSideChicks.Models"
+             x:DataType="viewmodel:ShowManagementViewModel"
              Title="{Binding Title}">
 
     <Grid
         ColumnDefinitions="*,*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
-        RowSpacing="0">
+        RowSpacing="0"
+        >
         <CollectionView
             Grid.ColumnSpan="3"
-            ItemsSource="{Binding Shows}"
+            ItemsSource="{Binding ShowsViewModel.Shows}"
             SelectionMode="None">
-            
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Show">
                     <Grid Padding="10">
                         <Frame HeightRequest="125" Style="{StaticResource CardView}">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowsViewModel}},Path=GoToShowDetailsCommand}"/>
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowManagementViewModel}},Path=GoToShowManagementCommand}"/>
                             </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill"
@@ -37,7 +38,7 @@
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
                                     <Label Style="{StaticResource LargeLabel}" Text="Date" />
                                     <Label Style="{StaticResource MediumLabel}" Text="{Binding date}" />
-                                   
+
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
@@ -45,38 +46,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Button Text="Get Shows" 
-                Command="{Binding GetAcceptedShowsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="0"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-        
-        <Button Text="Book us now" 
-                Command="{Binding GoBookUsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="1"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-        
-        <Button Text="Administration" 
-                Command="{Binding GoLoginCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="2"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-
-
-
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
     </Grid>
 </ContentPage>
