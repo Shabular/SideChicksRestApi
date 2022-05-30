@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheSideChicks.View.ManageBookingPage"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             x:DataType="viewmodel:ShowDetailsViewModel"
+             Shell.PresentationMode="ModalAnimated"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,Auto,*"
+                      Grid.Row="1"
+                      RowDefinitions="160, Auto">
+                <BoxView BackgroundColor="{StaticResource Primary}"
+                         Grid.ColumnSpan="3"
+                         HeightRequest="160"
+                         HorizontalOptions="FillAndExpand"/>
+                <Frame Grid.RowSpan="2"
+                       Grid.Column="1"
+                       HeightRequest="160"
+                       WidthRequest="160"
+                       CornerRadius="80"
+                       HorizontalOptions="Center"
+                       IsClippedToBounds="True"
+                       Padding="0"
+                       Margin="0,80,0,0">
+
+                    <Image Aspect="AspectFill"
+                           HeightRequest="160"
+                           WidthRequest="160"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="{Binding ShowTime.show.image}"/>
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="2"
+                      >
+                <VerticalStackLayout Padding="5" Spacing="5" Grid.Column="0">
+                    <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.location.adress, StringFormat='Adres: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='Contactinfo {0}'}"
+                       Style="{StaticResource LargeLabel}"/>
+
+
+                </VerticalStackLayout>
+                <VerticalStackLayout    Padding="1"
+                                        Grid.Column="2">
+                    <Image Aspect="Fill"
+                       HeightRequest="150"
+                       WidthRequest="200"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Source="{Binding bandLogo}"
+            
+                                       />
+                    <Label WidthRequest="100"
+                               HeightRequest="600"
+                               Text="{Binding ShowTime.show.details}"/>
+
+                </VerticalStackLayout>
+
+                <Button Text="Book us now" 
+                CommandParameter="{Binding ShowTime.show}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=AcceptBookingCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+            </Grid>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

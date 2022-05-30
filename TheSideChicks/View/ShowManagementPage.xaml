@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             x:Class="TheSideChicks.View.ShowManagementPage"
+             xmlns:model="clr-namespace:TheSideChicks.Models"
+             x:DataType="viewmodel:ShowManagementViewModel"
+             Title="{Binding Title}">
+
+    <Grid
+        ColumnDefinitions="*,*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0"
+        >
+        <CollectionView
+            Grid.ColumnSpan="3"
+            ItemsSource="{Binding ShowsViewModel.Shows}"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Show">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowManagementViewModel}},Path=GoToShowManagementCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <Image Aspect="AspectFill"
+                                       Source="{Binding image}"
+                                       WidthRequest="125"
+                                       HeightRequest="125"/>
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label Style="{StaticResource LargeLabel}" Text="Show name" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="Date" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding date}" />
+
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
