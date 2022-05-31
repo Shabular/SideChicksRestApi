@@ -107,6 +107,39 @@ namespace TheSideChicks.ViewModels
                                 { "ShowsViewModel", showsViewModel }
                         });
                 }
+
+                
+
+
+
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+
+
+            }[ICommand]
+            async Task GetUsersAsync()
+            {
+                if (IsBusy)
+                    return;
+
+                try
+                {
+                    IsBusy = true;
+
+                    UserService userService = new UserService();
+                    var users = userService.GetUsers();
+
+                    
+
+                    await Shell.Current.GoToAsync(nameof(UserManagementPage));
+                }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex);

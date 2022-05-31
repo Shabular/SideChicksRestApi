@@ -16,8 +16,6 @@ namespace TheSideChicks.ViewModels
         public ObservableCollection<Show> Shows { get; } = new();
 
 
-        
-
         //IConnectivity connectivity;
         
         public ShowsViewModel(ShowService showService, LocationService locationservice)

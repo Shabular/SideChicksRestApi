@@ -32,6 +32,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<ShowManagementViewModel>();
 		builder.Services.AddTransient<LoginViewModel>();
 		builder.Services.AddTransient<UserViewModel>();
+		builder.Services.AddTransient<UserManagementViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<ShowDetailsPage>();
@@ -40,6 +41,7 @@ public static class MauiProgram
         builder.Services.AddTransient<MembersPage>();
         builder.Services.AddTransient<ShowManagementPage>();
         builder.Services.AddTransient<ManageBookingPage>();
+        builder.Services.AddTransient<UserManagementPage>();
 
         return builder.Build();
 	}
