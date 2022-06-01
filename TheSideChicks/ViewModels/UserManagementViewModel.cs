@@ -135,19 +135,20 @@ namespace TheSideChicks.ViewModels
         }
         
         [ICommand]
-        async Task DeleteUser(User henk)
+        async Task DeleteUser(User user)
         {
-            if (IsBusy)
-                return;
+            try
+            {
+                var userDel = await userService.DeleteUserAsync(user);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to change user: {ex.Message}", "OK");
+            }
 
-            // delete user async
-            
 
-            await Shell.Current.GoToAsync(nameof(ManageUserPage), true,
-                new Dictionary<string, object>
-                    {
-                            { "User", user }
-                });
+            await Shell.Current.GoToAsync(nameof(MembersPage));
 
         }
 

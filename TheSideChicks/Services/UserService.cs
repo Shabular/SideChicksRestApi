@@ -55,6 +55,20 @@ namespace TheSideChicks.Services
 
             return user;
         }
+        
+        public async Task<User> DeleteUserAsync(User user)
+        {
+            var id = user.id;
+            var urll = $"{Url}/{id}";
+            var response = await httpClient.DeleteAsync(urll);
+
+            if (response.IsSuccessStatusCode)
+            {
+                userList = await GetUsers();
+            }
+
+            return user;
+        }
 
         public async Task<User> CheckIfUserInDatabase(User user)
         {

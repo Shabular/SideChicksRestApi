@@ -35,6 +35,18 @@ namespace SideChicksRestApi.Controllers;
             return user;
         }
         
+        // DELETE: api/Shows/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            
+            var user = await _context.Users.FindAsync(id);
+            _context.Remove(user);
+            await _context.SaveChangesAsync();
+            return NoContent();
+            
+        }
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> Change(string id, User user)
         {

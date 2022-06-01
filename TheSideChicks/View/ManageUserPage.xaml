@@ -55,8 +55,9 @@
                         Style="{StaticResource ButtonOutline}"
                         Margin="8"/>
 
-                <Button Text="Post Booking" 
-                    Command="{Binding UpdateUserCommand}"
+                <Button Text="Delete User"
+                        CommandParameter="{Binding User}"
+                    Command="{Binding DeleteUserCommand}"
                     IsEnabled="{Binding IsNotBusy}"
                     Grid.Row="1"
                     Grid.Column="0"
