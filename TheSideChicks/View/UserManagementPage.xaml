@@ -21,7 +21,12 @@
                 <DataTemplate x:DataType="model:User">
                     <Grid Padding="10">
                         <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                            <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserManagementViewModel}},Path=GetUserCommand}"/>
+                            </Frame.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="125,*">
+                                
                                 <VerticalStackLayout
                                 Grid.Column="1"
                                 Padding="10">

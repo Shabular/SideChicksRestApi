@@ -14,6 +14,7 @@ namespace TheSideChicks.Services
     {
         HttpClient httpClient;
 
+
         static string BaseUrl = DeviceInfoHelper.BaseUrl;
         string Url = $"{BaseUrl}/User";
         //string Url = "https://localhost:7126/api/Locations";
@@ -41,6 +42,20 @@ namespace TheSideChicks.Services
             return userList;
         }
         
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            var id = user.id;
+            var urll = $"{Url}/{id}";
+            var response = await httpClient.PutAsJsonAsync(urll, user);
+
+            if (response.IsSuccessStatusCode)
+            {
+                userList = await GetUsers();
+            }
+
+            return user;
+        }
+
         public async Task<User> CheckIfUserInDatabase(User user)
         {
 

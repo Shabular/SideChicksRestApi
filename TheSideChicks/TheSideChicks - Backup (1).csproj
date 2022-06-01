@@ -81,9 +81,6 @@
 	  <MauiXaml Update="View\ManageBookingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ManageUserPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\MembersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

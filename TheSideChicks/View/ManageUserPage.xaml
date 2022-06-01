@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="TheSideChicks.View.ManageUserPage"
+                xmlns:model="clr-namespace:TheSideChicks.Models"
+                xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+                x:DataType="viewmodel:UserManagementViewModel"  
+                Title="{Binding Title}">
+    <Grid
+        
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="200,*,Auto"
+        RowSpacing="0">
+        <Image Aspect="Fill"
+               HeightRequest="150"
+               WidthRequest="200"
+               Grid.Column="0"
+               Grid.Row="0"
+                Source="sidechicks.PNG"
+            
+                                       />
+        <ScrollView Grid.Column="0"
+                    Grid.Row="1">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="Firstname"/>
+                <Entry Placeholder="{Binding User.firstname}"
+                       Text="{Binding User.firstname}"
+                       />
+
+                <Label Text="Lastname"/>
+                <Entry Placeholder="{Binding User.lastname}"
+                       Text="{Binding User.lastname}"/>
+
+                <Label Text="Instrument"/>
+                <Entry Placeholder="{Binding User.instrument}"
+                       Text="{Binding User.instrument}"/>
+
+
+                <Button Text="change user" 
+                    CommandParameter="{Binding User}"
+                    Command="{Binding UpdateUserCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="8"/>
+
+                <Button Text="Make this guy join the band" 
+                        CommandParameter="{Binding User}"
+                        Command="{Binding AddAssAdminCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource ButtonOutline}"
+                        Margin="8"/>
+
+                <Button Text="Post Booking" 
+                    Command="{Binding UpdateUserCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="8"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
+
+</ContentPage>

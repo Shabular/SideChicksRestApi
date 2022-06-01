@@ -34,4 +34,15 @@ namespace SideChicksRestApi.Controllers;
 
             return user;
         }
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Change(string id, User user)
+        {
+            
+            if (id != user.Id) return BadRequest();
+
+            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 }
