@@ -37,44 +37,36 @@
             <Grid Grid.Row="2"
                       >
                 <VerticalStackLayout Padding="5" Spacing="5" Grid.Column="0">
-                <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                    <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
+                       Style="{StaticResource MediumLabel}"/>
 
-                <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                    <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}'}"
+                       Style="{StaticResource MediumLabel}"/>
 
-                <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                    <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
+                       Style="{StaticResource MediumLabel}"/>
 
                     <Label Text="{Binding ShowTime.location.adress, StringFormat='Adres: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                       Style="{StaticResource MediumLabel}"/>
 
-                <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                    <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
+                       Style="{StaticResource MediumLabel}"/>
 
-                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='Contactinfo {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='{0}'}"
+                       Style="{StaticResource MediumLabel}"/>
 
+                    <Label Text=""/>
 
-        </VerticalStackLayout>
-                <VerticalStackLayout    Padding="1"
-                                        Grid.Column="2">
-                    <Image Aspect="Fill"
-                       HeightRequest="150"
-                       WidthRequest="200"
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       Source="{Binding bandLogo}"
-            
-                                       />
-                    <Label WidthRequest="100"
-                               HeightRequest="600"
-                               Text="{Binding ShowTime.show.details}"/>
-
+                    <Label Text="{Binding ShowTime.show.details}"
+                           Padding="10"
+                           Style="{StaticResource LargeLabel}"/>
                 </VerticalStackLayout>
             </Grid>
-                
-            
+
+            <Button Text="Go Back"
+                        Command="{Binding GoBackCommand}" />
+
+
         </VerticalStackLayout>
         </ScrollView>
 

@@ -5,14 +5,14 @@
              x:Class="TheSideChicks.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#5C6C737</Color>
-			
-            <Color x:Key="ButtonsAndTitles">#4A272F</Color>
+            <Color x:Key="Primary">#004d00</Color>
+
+            <Color x:Key="ButtonsAndTitles">#00004d</Color>
             <Color x:Key="PrimaryDark">#FFA000</Color>
             <Color x:Key="Accent">#4A272F</Color>
 
             <Color x:Key="LightBackground">#5C6C73</Color>
-            <Color x:Key="DarkBackground">#5C6C73</Color>
+            <Color x:Key="DarkBackground">#006600</Color>
 
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"

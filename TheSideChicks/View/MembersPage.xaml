@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TheSideChicks.View.MembersPage"
-             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
-             x:DataType="viewmodel:UserViewModel"
-             Shell.PresentationMode="ModalAnimated"
-             Title="{Binding Title}">
-    <StackLayout>
-        <Button Text="Pending bookings" 
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="TheSideChicks.View.MembersPage"
+            xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+            x:DataType="viewmodel:UserViewModel"
+            xmlns:view="clr-namespace:TheSideChicks.View"
+            Shell.PresentationMode="ModalAnimated"   
+            Title="Thank you for logging in"
+            xmlns:local="clr-namespace:TheSideChicks.View"
+            BarBackgroundColor="{StaticResource Primary}}"
+            BarTextColor="{StaticResource ButtonsAndTitles}"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+
+
+    <ContentPage Title="Show Management">
+        <Grid >
+            <VerticalStackLayout>
+                <Button Text="Book us" 
+                Command="{Binding GoBookUsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+                <Button Text="Pending bookings" 
                 Command="{Binding GetPendingShowsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
@@ -15,15 +33,23 @@
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
 
-        <Button Text="Accepted bookings" 
+                <Button Text="Accepted bookings" 
                 Command="{Binding GetAcceptedShowsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="1"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
+            </VerticalStackLayout>
+            
+        </Grid>
 
-        <Button Text="block a date" 
+    </ContentPage>
+
+    <ContentPage Title="User Managment">
+        <Grid>
+            <VerticalStackLayout>
+                <Button Text="User management" 
                 Command="{Binding GetUsersCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
@@ -31,7 +57,8 @@
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
 
-        <Button Text="add news" 
+                <Button 
+                Text="add location" 
                 Command="{Binding NotImplementedCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
@@ -39,21 +66,29 @@
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
 
-        <Button Text="Update users" 
+            </VerticalStackLayout>
+            
+        </Grid>
+
+    </ContentPage>
+
+    <ContentPage Title="About the band">
+        <VerticalStackLayout>
+            <Button IsVisible="{Binding isAdmin}"
+                Text="add news" 
                 Command="{Binding NotImplementedCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="2"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
+        </VerticalStackLayout>
+       
+    </ContentPage>
 
 
 
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
-    </StackLayout>
-</ContentPage>
+
+
+
+</TabbedPage>

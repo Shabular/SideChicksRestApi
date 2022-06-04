@@ -31,11 +31,7 @@ namespace TheSideChicks.ViewModels
         
 
 
-        [ICommand]
-        async Task GoBack()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
+       
 
         [ICommand]
         async Task GoToShowManagement(Show show)
