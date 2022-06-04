@@ -7,10 +7,12 @@ namespace SideChicksRestApi.Models;
 public class Show
 {
     public int Id { get; set; }
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Image { get; set; }
     public string Details { get; set; }
     public double Fee { get; set; }
+    
     [ForeignKey("LocationId")]
     public int LocationId { get; set; }
     public DateTime Date { get; set; }

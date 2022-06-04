@@ -28,11 +28,21 @@ namespace SideChicksRestApi.Controllers;
         [HttpPost]
         public async Task<User> Create(User user)
         {
+            var userToAdd = new User
+            {
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Instrument = user.Instrument,
+                Password = user.Password,
+                Email = user.Email
+
+            };
             
-            _context.Add(user);
+            _context.Add(userToAdd);
             await _context.SaveChangesAsync();
 
-            return user;
+            return userToAdd;
         }
         
         // DELETE: api/Shows/5

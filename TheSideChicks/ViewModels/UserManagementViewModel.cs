@@ -22,6 +22,8 @@ namespace TheSideChicks.ViewModels
         public string instrument { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string passwordRepeat { get; set; }
+
 
         public bool isadmin { get; set; }
 
@@ -31,11 +33,17 @@ namespace TheSideChicks.ViewModels
         {
             Title = "User management";
             this.userService = userService;
+            if (user == null)
+                user = new User();
 
 
             var Users = new ObservableCollection<User>();
 
             _ = GetUsers();
+        }
+
+        public UserManagementViewModel()
+        {
         }
 
         [ICommand]
@@ -108,7 +116,7 @@ namespace TheSideChicks.ViewModels
             await Shell.Current.GoToAsync(nameof(MembersPage));
 
         }
-        
+
         [ICommand]
         async void AddAssAdmin()
         {
@@ -122,7 +130,7 @@ namespace TheSideChicks.ViewModels
             try
             {
                 UpdateUser();
-            } 
+            }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
@@ -131,6 +139,45 @@ namespace TheSideChicks.ViewModels
 
 
             await Shell.Current.GoToAsync(nameof(MembersPage));
+        }
+
+        [ICommand]
+        async void AddUser(User user)
+        {
+            if (IsBusy)
+                return;
+
+            if (user == null)
+                user = new User();
+
+            try
+            {
+                if (password == passwordRepeat)
+                {
+                    user.password = password;
+                } else
+                {
+                    await Shell.Current.DisplayAlert("Error!", $"Your passwords did not match", "OK");
+                    return;
+                }
+
+                if ((user.username != null) && (user.password != null))
+                {
+                    user = await userService.AddUserAsync(user);
+                    await Shell.Current.GoToAsync(nameof(MembersPage));
+                }
+                    
+                else
+                    await Shell.Current.DisplayAlert("Error!", $"Unable to add user, have you filled in atleast username and password?", "OK");
+            } 
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"An unexpected error occurred", "OK");
+            }
+
+
+            return;
 
         }
         

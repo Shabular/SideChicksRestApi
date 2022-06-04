@@ -9,6 +9,7 @@ namespace TheSideChicks.Models
     public class Location
     {
         public int id { get; set; }
+        public string userid { get; set; }
         public string name { get; set; }
         public string owner { get; set; }
         public string street { get; set; }

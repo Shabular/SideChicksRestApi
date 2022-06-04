@@ -52,30 +52,20 @@
                     <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
                        Style="{StaticResource LargeLabel}"/>
 
-                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='Contactinfo {0}'}"
+                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='{0}'}"
                        Style="{StaticResource LargeLabel}"/>
 
 
-                </VerticalStackLayout>
-                <VerticalStackLayout    Padding="1"
-                                        Grid.Column="2">
-                    <Image Aspect="Fill"
-                       HeightRequest="150"
-                       WidthRequest="200"
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       Source="{Binding bandLogo}"
-            
-                                       />
-                    <Label WidthRequest="100"
-                               HeightRequest="200"
-                               Text="{Binding ShowTime.show.details}"/>
-
+                    <Label Padding="10"
+                           Style="{StaticResource LargeLabel}"
+                            Text="{Binding ShowTime.show.details}"/>
                 </VerticalStackLayout>
 
-                
+
+
             </Grid>
-            <Button Text="Accept Booking" 
+            <Button Text="Accept Booking"
+                IsVisible="{Binding isAdmin}"
                 CommandParameter="{Binding ShowTime.show}"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=AcceptBookingCommand}"
                 IsEnabled="{Binding IsNotBusy}"

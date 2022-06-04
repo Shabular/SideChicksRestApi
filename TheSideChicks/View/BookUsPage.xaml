@@ -7,6 +7,7 @@
              xmlns:model="clr-namespace:TheSideChicks.Models"
              xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
              Title="{Binding Title}">
+
     <Grid
         
         ColumnDefinitions="*,*"
@@ -18,7 +19,7 @@
                WidthRequest="200"
                Grid.Column="0"
                Grid.Row="0"
-                Source="sidechicks.PNG"
+               Source="sidechicks.PNG"
             
                                        />
         <ScrollView Grid.Column="0"
@@ -73,6 +74,8 @@
                 <Label Text="Give us an offer we cant refuse"/>
                 <Entry Placeholder="390.27"
                        Text="{Binding fee}"/>
+
+
 
                 <Button Text="Post Booking" 
                 Command="{Binding AddShow}"

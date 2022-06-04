@@ -14,7 +14,7 @@ namespace TheSideChicks.ViewModels
         UserService userService;
         ShowService showService;
         LocationService locationService;
-  
+
 
         public ObservableCollection<User> User { get; } = new();
 
@@ -28,12 +28,14 @@ namespace TheSideChicks.ViewModels
         public bool isadmin { get; set; }
 
         public System.Windows.Input.ICommand LogIn { get; }
+        public System.Windows.Input.ICommand Register { get; }
 
         public LoginViewModel(UserService userService, ShowService showService, LocationService locationService)
         {
             Title = "Log in";
 
             LogIn = new Command(LogInAsync);
+            Register = new Command(RegisterAsync);
 
             this.userService = userService;
             this.showService = showService;
@@ -55,35 +57,62 @@ namespace TheSideChicks.ViewModels
                 var userInDatabase = await userService.CheckIfUserInDatabase(user);
                 Preferences.Set("username", userInDatabase.username);
                 Preferences.Set("isAdmin", userInDatabase.isadmin);
+                Preferences.Set("userId", userInDatabase.id);
+                Preferences.Set("isLoggedIn", true);
 
                 UserViewModel userViewModel = new(userService, showService, locationService);
+
+
+                await Shell.Current.GoToAsync(nameof(MembersPage), true,
+
+                    new Dictionary<string, object>
+                    {
+                        { "UserViewModel", userViewModel }
+                    });
                 
-
-                // check if user already exists, if not add location
-                if (Preferences.Get("isAdmin", false).Equals(true))
-                {
-
-                    await Shell.Current.GoToAsync(nameof(MembersPage), true,
-
-                        new Dictionary<string, object>
-                        {
-                            { "UserViewModel", userViewModel }
-                        });
-                }
             }
             catch
             {
                 await Shell.Current.DisplayAlert("Account not allowed", $"Try other credentials if you dare", "OK");
                 return;
             }
-            
-            
 
-            
 
-            
 
+
+
+
+
+
+
+        }
+        private async void RegisterAsync()
+        {
+
+            try
+            {
+                var userManagementViewModel = new UserManagementViewModel();
+
+
+                // check if user already exists, if not add location
+
+                await Shell.Current.GoToAsync(nameof(RegistrationPage), true,
+
+                    new Dictionary<string, object>
+                    {
+                            { "UserManagementViewModel", userManagementViewModel }
+                    });
+
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Account not allowed", $"Try other credentials if you dare", "OK");
+                return;
+            }
         }
     }
 }
+
+
+
 

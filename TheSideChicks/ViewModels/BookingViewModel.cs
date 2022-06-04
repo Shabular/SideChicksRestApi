@@ -48,13 +48,16 @@ namespace TheSideChicks.ViewModels
             this.locationService = locationService;
 
         }
+
         private async void AddNewBooking()
         {
+            var userId = Preferences.Get("userId", "test");
 
             
             var location = new Location
             {
                 name = venueName,
+                userid = userId,
                 owner = locationOwnerName,
                 street = street,
                 number = number,
@@ -66,6 +69,7 @@ namespace TheSideChicks.ViewModels
             var show = new Show
             {
                 name = showName,
+                userid =userId,
                 image = image,
                 date = date,
                 details = details,
@@ -76,9 +80,16 @@ namespace TheSideChicks.ViewModels
             
             // check if location already exists, if not add location
             var addedLocation = await locationService.AddLocation(location);
+            
             if (addedLocation is null)
             {
                 addedLocation = await locationService.GetLocationByPostalNumber(location.postalNumber);
+            }
+
+            if (addedLocation == null)
+            {
+                await Shell.Current.DisplayAlert("Error!", $"The server could not save the location", "OK");
+                return;
             }
             show.locationId = addedLocation.id;
             // add location id to show and add show
@@ -88,6 +99,12 @@ namespace TheSideChicks.ViewModels
             
             return;
 
+        }
+
+        [ICommand]
+        async Task BackToMembersPage()
+        {
+            await Shell.Current.GoToAsync($"{nameof(MembersPage)}");
         }
     }
 }

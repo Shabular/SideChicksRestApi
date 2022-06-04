@@ -41,12 +41,41 @@ namespace TheSideChicks.Services
 
             return userList;
         }
-        
+
+        public async Task<User> GetUser(string id)
+        {
+
+            var user = new User();
+            var url = $"{Url}/{id}";
+
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                user = await response.Content.ReadFromJsonAsync<User>();
+            }
+
+            return user;
+        }
+
         public async Task<User> UpdateUserAsync(User user)
         {
             var id = user.id;
             var urll = $"{Url}/{id}";
             var response = await httpClient.PutAsJsonAsync(urll, user);
+
+            if (response.IsSuccessStatusCode)
+            {
+                userList = await GetUsers();
+            }
+
+            return user;
+        }
+        
+        public async Task<User> AddUserAsync(User user)
+        {
+            
+            var response = await httpClient.PostAsJsonAsync(Url, user);
 
             if (response.IsSuccessStatusCode)
             {

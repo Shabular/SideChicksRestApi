@@ -18,4 +18,6 @@ public class User: IdentityUser
     public bool IsAdmin { get; set; }
     [PersonalData]
     public string Password { get; set; }
+    
+
 }

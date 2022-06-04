@@ -1,8 +1,8 @@
 namespace TheSideChicks.View;
 
-public partial class LoginPage : ContentPage
+public partial class RegistrationPage : ContentPage
 {
-	public LoginPage(LoginViewModel viewModel)
+	public RegistrationPage(UserManagementViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = viewModel;

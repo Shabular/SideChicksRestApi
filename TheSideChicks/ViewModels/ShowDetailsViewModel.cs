@@ -36,12 +36,13 @@ namespace TheSideChicks.ViewModels
         [ICommand]
         async Task AcceptBooking(Show show)
         {
-            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
+           if (Preferences.Get("isAdmin", false) == false)
             {
-                
-                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                await Shell.Current.DisplayAlert("Realy ?", $"You are not allowed to accept the show on our behalf", "OK");
                 return;
-            }*/
+            }
+
+
             Console.Write(show);
             if (show is null)
             {

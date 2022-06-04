@@ -14,6 +14,8 @@ namespace TheSideChicks.Models
         public string instrument { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string email { get; set; }
+        public List<int> locationids{ get; set; }
 
         public bool isadmin { get; set; }
 

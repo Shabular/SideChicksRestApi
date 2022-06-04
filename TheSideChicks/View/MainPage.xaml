@@ -12,11 +12,22 @@
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
+
+        <VerticalStackLayout IsVisible="{Binding ShowsNotFilled}"
+                                    Grid.ColumnSpan="3"
+                                    Padding="10">
+            <Label Style="{StaticResource LargeLabel}" Text="Welcome to the SideChicks " />
+            <Label Style="{StaticResource LargeLabel}" Text="To see our upcomming shows click here" />
+            
+
+        </VerticalStackLayout>
         <CollectionView
             Grid.ColumnSpan="3"
             ItemsSource="{Binding Shows}"
             SelectionMode="None">
             
+            
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Show">
                     <Grid Padding="10">
@@ -37,7 +48,7 @@
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
                                     <Label Style="{StaticResource LargeLabel}" Text="Date" />
                                     <Label Style="{StaticResource MediumLabel}" Text="{Binding date}" />
-                                   
+
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
@@ -45,31 +56,14 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Button Text="Get Shows" 
+        <Button IsVisible="{Binding ShowsNotFilled}"
+                Text="Get Shows" 
                 Command="{Binding GetAcceptedShowsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="0"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-        
-        <Button Text="Book us now" 
-                Command="{Binding GoBookUsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
-        
-        <Button Text="Administration" 
-                Command="{Binding GoLoginCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="2"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-
 
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"

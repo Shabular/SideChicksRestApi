@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                x:Class="TheSideChicks.View.ManageUserPage"
                 xmlns:model="clr-namespace:TheSideChicks.Models"
                 xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
                 x:DataType="viewmodel:UserManagementViewModel"  
+                x:Class="TheSideChicks.View.RegistrationPage"
+                
                 Title="{Binding Title}">
     <Grid
         
@@ -12,6 +13,7 @@
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
+        
         <Image Aspect="Fill"
                HeightRequest="150"
                WidthRequest="200"
@@ -23,6 +25,16 @@
         <ScrollView Grid.Column="0"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="0">
+                <Label Text="Username"/>
+                <Entry Placeholder="{Binding User.username}"
+                       Text="{Binding User.username}"
+                       />
+                
+                <Label Text="Email"/>
+                <Entry Placeholder="{Binding User.email}"
+                       Text="{Binding User.email}"
+                       />
+                
                 <Label Text="Firstname"/>
                 <Entry Placeholder="{Binding User.firstname}"
                        Text="{Binding User.firstname}"
@@ -32,37 +44,30 @@
                 <Entry Placeholder="{Binding User.lastname}"
                        Text="{Binding User.lastname}"/>
 
+                <Label Text="Password"/>
+                <Entry Placeholder="{Binding password}"
+                       Text="{Binding password}"/>
+                
+                <Label Text="Repeat password"/>
+                <Entry Placeholder="{Binding passwordRepeat}"
+                       Text="{Binding passwordRepeat}"/>
+                
                 <Label Text="Instrument"/>
                 <Entry Placeholder="{Binding User.instrument}"
                        Text="{Binding User.instrument}"/>
+                
+                
 
 
                 <Button Text="change user" 
                     CommandParameter="{Binding User}"
-                    Command="{Binding UpdateUserCommand}"
+                    Command="{Binding AddUserCommand}"
                     IsEnabled="{Binding IsNotBusy}"
                     Grid.Row="1"
                     Grid.Column="0"
                     Style="{StaticResource ButtonOutline}"
                     Margin="8"/>
 
-                <Button Text="{Binding User.isadmin, StringFormat='This user is bandmamber = {0} .... change this now'}"
-                        CommandParameter="{Binding User}"
-                        Command="{Binding AddAssAdminCommand}"
-                        IsEnabled="{Binding IsNotBusy}"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Style="{StaticResource ButtonOutline}"
-                        Margin="8"/>
-
-                <Button Text="Delete User"
-                        CommandParameter="{Binding User}"
-                    Command="{Binding DeleteUserCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Style="{StaticResource ButtonOutline}"
-                    Margin="8"/>
 
             </VerticalStackLayout>
 

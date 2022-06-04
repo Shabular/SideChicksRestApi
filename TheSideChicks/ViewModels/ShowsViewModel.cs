@@ -15,16 +15,29 @@ namespace TheSideChicks.ViewModels
         
         public ObservableCollection<Show> Shows { get; } = new();
 
+        public bool ShowsNotFilled { get; set; }
+
 
         //IConnectivity connectivity;
-        
+
         public ShowsViewModel(ShowService showService, LocationService locationservice)
         {
+            isShows(); 
             Title = "Shows Finder";
             this.locationService = locationservice;
             this.showService = showService;
-            //this.connectivity = connectivity;
 
+            
+        }
+
+        public void isShows()
+        {
+          if (Shows.Count == 0)
+                ShowsNotFilled = true;
+          else
+                ShowsNotFilled = false;
+
+    
         }
 
         [ICommand]
@@ -44,7 +57,7 @@ namespace TheSideChicks.ViewModels
             showtime.show = show;
             showtime.location = await locationService.GetLocationById(show.locationId);
             showtime.location.adress = $"{showtime.location.street} {showtime.location.number}";
-            showtime.location.contactInfo = $": email: {showtime.location.email} | phone number: {showtime.location.number}";
+            showtime.location.contactInfo = $"email: {showtime.location.email} | phone number: {showtime.location.number}";
             
 
             await Shell.Current.GoToAsync($"{nameof(ShowDetailsPage)}", true,
@@ -58,19 +71,7 @@ namespace TheSideChicks.ViewModels
 
   
         
-        [ICommand]
-        async Task GoBookUsAsync()
-        {
-            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-
-                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
-                return;
-            }*/
-
-            await Shell.Current.GoToAsync(nameof(BookUsPage));
-               
-        }
+        
 
         [ICommand]
         async Task GoLoginAsync()
@@ -94,6 +95,7 @@ namespace TheSideChicks.ViewModels
 
             try 
             {
+
                 IsBusy = true;
                 var shows = await showService.GetShows();
 
@@ -105,6 +107,7 @@ namespace TheSideChicks.ViewModels
                     {
                         Shows.Add(show);
                     }
+                isShows();
             }
             catch (Exception ex)
             {

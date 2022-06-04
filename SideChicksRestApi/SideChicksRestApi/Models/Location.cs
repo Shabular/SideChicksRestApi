@@ -6,6 +6,7 @@ namespace SideChicksRestApi.Models;
 public class Location
 {
     public int Id { get; set; }
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Owner { get; set; }
     public string Street { get; set; }
