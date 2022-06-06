@@ -9,6 +9,7 @@ public class Location
     public string UserId { get; set; }
     public string Name { get; set; }
     public string Owner { get; set; }
+    public string City { get; set; }
     public string Street { get; set; }
     public int Number { get; set; }
     public string PostalNumber { get; set; }

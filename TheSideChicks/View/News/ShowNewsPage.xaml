@@ -45,9 +45,7 @@
                                 <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label Style="{StaticResource LargeLabel}" Text="Show name" />
                                     <Label Style="{StaticResource LargeLabel}" Text="{Binding title}" />
-                                    <Label Style="{StaticResource LargeLabel}" Text="Date" />
                                     <Label Style="{StaticResource MediumLabel}" Text="{Binding details}" />
 
                                 </VerticalStackLayout>

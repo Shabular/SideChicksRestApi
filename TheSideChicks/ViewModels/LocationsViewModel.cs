@@ -50,7 +50,7 @@ namespace TheSideChicks.ViewModels
                 if (!doesExist)
                 {
                     //here we should see if a location with same postal and number does not exist
-                    User user = await userService.GetUser(Preferences.Get("userId", "Non Existent"));
+
                     location.userid = userId;
                     location.email = userEmail;
                     var addedLocation = locationService.AddLocation(location);

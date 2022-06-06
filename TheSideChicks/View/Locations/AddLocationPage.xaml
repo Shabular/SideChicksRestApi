@@ -35,6 +35,10 @@
                 <Label Text="Owners name"/>
                 <Entry Placeholder="Who is booking"
                        Text="{Binding Location.owner}"/>
+                
+                <Label Text="City"/>
+                <Entry Placeholder="Breda"
+                       Text="{Binding Location.city}"/>
 
 
                 <Label Text="Phone number"/>

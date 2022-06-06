@@ -11,8 +11,8 @@ using SideChicksRestApi.Data;
 namespace SideChicksRestApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220606080138_addNews")]
-    partial class addNews
+    [Migration("20220606201706_initialAfterCrash")]
+    partial class initialAfterCrash
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,10 @@ namespace SideChicksRestApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .IsRequired()
