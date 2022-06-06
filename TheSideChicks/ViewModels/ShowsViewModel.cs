@@ -56,8 +56,6 @@ namespace TheSideChicks.ViewModels
             ShowTime showtime = new ShowTime();
             showtime.show = show;
             showtime.location = await locationService.GetLocationById(show.locationId);
-            showtime.location.adress = $"{showtime.location.street} {showtime.location.number}";
-            showtime.location.contactInfo = $"email: {showtime.location.email} | phone number: {showtime.location.number}";
             
 
             await Shell.Current.GoToAsync($"{nameof(ShowDetailsPage)}", true,

@@ -40,6 +40,20 @@ namespace TheSideChicks.Services
             return locationList;
         }
 
+        public async Task<bool> CheckIfLocationExists(Location location)
+        {
+            List<Location> existingLocations = await GetLocations();
+            if (existingLocations != null)
+            {
+                if ((existingLocations.Find(l => l.postalNumber == location.postalNumber) != null)
+                    & (existingLocations.Find(l => l.number == location.number) != null))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public async Task<Location> GetLocationById(int id)
         {
             var url = $"{Url}/{id}";

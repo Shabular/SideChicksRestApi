@@ -8,13 +8,13 @@
             Shell.PresentationMode="ModalAnimated"   
             Title="Thank you for logging in"
             xmlns:local="clr-namespace:TheSideChicks.View"
-            BarBackgroundColor="{StaticResource Primary}}"
+            BarBackgroundColor="{StaticResource Primary}"
             BarTextColor="{StaticResource ButtonsAndTitles}"
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             android:TabbedPage.ToolbarPlacement="Bottom">
 
 
-    <ContentPage Title="Show Management">
+    <ContentPage Title="Booking">
         <Grid >
             <VerticalStackLayout>
                 <Button Text="Book us" 
@@ -46,7 +46,7 @@
 
     </ContentPage>
 
-    <ContentPage Title="User Managment">
+    <ContentPage Title="Managment">
         <Grid>
             <VerticalStackLayout>
                 <Button Text="User management" 
@@ -59,7 +59,7 @@
 
                 <Button 
                 Text="add location" 
-                Command="{Binding NotImplementedCommand}"
+                Command="{Binding AddLocationCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -74,8 +74,22 @@
 
     <ContentPage Title="About the band">
         <VerticalStackLayout>
-            <Button IsVisible="{Binding isAdmin}"
+            <Button
                 Text="add news" 
+                Command="{Binding GoToNewsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="2"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+            <Button Text="Show News" 
+                Command="{Binding NotImplementedCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="2"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+            <Button Text="About the band" 
                 Command="{Binding NotImplementedCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"

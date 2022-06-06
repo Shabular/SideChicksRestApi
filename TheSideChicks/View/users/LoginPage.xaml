@@ -24,14 +24,14 @@
         <ScrollView Grid.Column="1"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="1">
-                <Label Text="Venue name"/>
+                <Label Text="Username"/>
                 <Entry Placeholder="Venue name"
                        Text="{Binding username}"
                        />
 
-                <Label Text="Event name"/>
-                <Entry Placeholder="Show name"
-                       Text="{Binding password}"/>
+                <Label Text="Password"/>
+                <Entry Placeholder="TheSideChicks1!"
+                       IsPassword="{Binding password}"/>
 
                 <Button Text="Log in" 
                 Command="{Binding LogIn}"

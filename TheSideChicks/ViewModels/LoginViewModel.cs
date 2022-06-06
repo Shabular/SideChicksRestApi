@@ -58,6 +58,7 @@ namespace TheSideChicks.ViewModels
                 Preferences.Set("username", userInDatabase.username);
                 Preferences.Set("isAdmin", userInDatabase.isadmin);
                 Preferences.Set("userId", userInDatabase.id);
+                Preferences.Set("userEmail", userInDatabase.email);
                 Preferences.Set("isLoggedIn", true);
 
                 UserViewModel userViewModel = new(userService, showService, locationService);

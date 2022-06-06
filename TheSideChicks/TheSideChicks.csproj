@@ -63,50 +63,57 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\ShowManagementPage.xaml.cs">
+	  <Compile Update="View\Locations\AddLocationPage.xaml.cs">
+	    <DependentUpon>AddLocationPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\shows\ShowManagementPage.xaml.cs">
 	    <DependentUpon>ShowManagementPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\ShowsPage.xaml">
+	  <MauiXaml Update="View\News\AddNewsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\BookUsPage.xaml">
+	  <MauiXaml Update="View\Locations\AddLocationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\LoginPage.xaml">
+	  <MauiXaml Update="View\News\ShowNewsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\shows\ShowsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\shows\BookUsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\users\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ManageBookingPage.xaml">
+	  <MauiXaml Update="View\shows\ManageBookingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ManageUserPage.xaml">
+	  <MauiXaml Update="View\users\ManageUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\MembersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RegistrationPage.xaml">
+	  <MauiXaml Update="View\users\RegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ShowDetailsPage.xaml">
+	  <MauiXaml Update="View\shows\ShowDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ShowManagementPage.xaml">
+	  <MauiXaml Update="View\shows\ShowManagementPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\UserManagementPage.xaml">
+	  <MauiXaml Update="View\users\UserManagementPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="View\shows\" />
-	  <Folder Include="View\users\" />
 	</ItemGroup>
 
 </Project>

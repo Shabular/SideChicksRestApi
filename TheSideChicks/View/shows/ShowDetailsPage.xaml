@@ -46,13 +46,15 @@
                     <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
 
-                    <Label Text="{Binding ShowTime.location.adress, StringFormat='Adres: {0}'}"
+                    <Label Text="{Binding ShowTime.location.street, StringFormat='Adres: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
 
                     <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
 
-                    <Label Text="{Binding ShowTime.location.contactInfo, StringFormat='{0}'}"
+                    <Label Text="{Binding ShowTime.location.email, StringFormat='Email: {0}'}"
+                       Style="{StaticResource MediumLabel}"/>
+                    <Label Text="{Binding ShowTime.location.phoneNumber, StringFormat='Phone: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
 
                     <Label Text=""/>

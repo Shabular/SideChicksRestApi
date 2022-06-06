@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheSideChicks.View.AddLocationPage"
+             xmlns:local="clr-namespace:TheSideChicks"
+             x:DataType="viewmodel:LocationsViewModel"
+             xmlns:model="clr-namespace:TheSideChicks.Models"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             Title="{Binding Title}">
+
+
+    <Grid
+        
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="200,*,Auto"
+        RowSpacing="0">
+        <Image Aspect="Fill"
+               HeightRequest="150"
+               WidthRequest="200"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Grid.Row="0"
+               Source="{Binding bandLogo}"
+            
+                                       />
+        <ScrollView Grid.Column="0"
+                    Grid.Row="1">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="Venue name"/>
+                <Entry Placeholder="Venue name"
+                       Text="{Binding Location.name}"
+                       />
+
+                <Label Text="Owners name"/>
+                <Entry Placeholder="Who is booking"
+                       Text="{Binding Location.owner}"/>
+
+
+                <Label Text="Phone number"/>
+                <Entry Placeholder="+31654567898"
+                       Text="{Binding Location.phoneNumber}"/>
+
+                <Label Text="Email"/>
+                <Entry Placeholder="Henk@hotmail.com"
+                       Text="{Binding Location.email}"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+        <ScrollView Grid.Column="1"
+                    Grid.Row="1">
+
+            <VerticalStackLayout    Padding="10">
+
+
+                    <Label Text="Street"/>
+                    <Entry Placeholder="Street"
+                            Text="{Binding Location.street}"/>
+                    <Label Text="number"/>
+                    <Entry Placeholder="3"
+                        Text="{Binding Location.number}"/>
+
+                <Label Text="Postal Code"/>
+                 <Entry Placeholder="postal number"
+                       Text="{Binding Location.postalNumber}"/>
+                
+            </VerticalStackLayout>
+            
+            
+
+        </ScrollView>
+        <ScrollView Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2">
+            
+            <VerticalStackLayout    Padding="10">
+
+                <Button Text="Add location" 
+                Command="{Binding AddLocationCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                VerticalOptions="End"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+                
+                <Button Text="go back" 
+                Command="{Binding GoBackCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+
+
+            </VerticalStackLayout>
+
+
+
+        </ScrollView>
+
+
+
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
+
+</ContentPage>

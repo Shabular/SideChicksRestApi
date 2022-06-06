@@ -62,8 +62,7 @@ namespace TheSideChicks.ViewModels
                 street = street,
                 number = number,
                 postalNumber = postalNumber,
-                phoneNumber = phoneNumber,
-                email = email
+                phoneNumber = phoneNumber
             };
 
             var show = new Show

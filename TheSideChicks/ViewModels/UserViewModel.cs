@@ -83,6 +83,30 @@ namespace TheSideChicks.ViewModels
                 IsBusy = false;
             }
         }
+
+
+        [ICommand]
+        async Task GoToNewsAsync()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+                IsBusy = true;
+
+                await Shell.Current.GoToAsync(nameof(AddNewsPage));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
         
         
 
@@ -202,7 +226,22 @@ namespace TheSideChicks.ViewModels
             await Shell.Current.GoToAsync(nameof(BookUsPage));
 
         }
+
+        [ICommand]
+        async Task AddLocationAsync()
+        {
+            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                return;
+            }*/
+
+            await Shell.Current.GoToAsync(nameof(AddLocationPage));
+
+        }
     }
+    
 }
 
 

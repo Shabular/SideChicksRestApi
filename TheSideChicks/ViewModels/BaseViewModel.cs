@@ -23,6 +23,7 @@ namespace TheSideChicks.ViewModels
         public bool isAdmin => Preferences.Get("isAdmin", false);
         public bool isNotAdmin => !isAdmin;
         public string userID => Preferences.Get("userId", "");
+        public string userEmail => Preferences.Get("userEmail", "");
         public string usernamePref => Preferences.Get("username", "");
         public bool isLoggedIn => Preferences.Get("isLoggedIn", false);
         public bool isNotLoggedIn => !isLoggedIn;

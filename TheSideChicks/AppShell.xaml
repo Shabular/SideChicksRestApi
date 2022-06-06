@@ -31,8 +31,8 @@
              IsVisible="{Binding isLoggedIn}">
             <ShellContent ContentTemplate="{DataTemplate view:MainPage}" />
         </Tab>
-        <Tab Title="Book us">
-            <ShellContent ContentTemplate="{DataTemplate view:BookUsPage}" />
+        <Tab Title="News">
+            <ShellContent ContentTemplate="{DataTemplate view:ShowNewsPage}" />
         </Tab>
         <Tab Title="Log in">
             <ShellContent ContentTemplate="{DataTemplate view:LoginPage}" />

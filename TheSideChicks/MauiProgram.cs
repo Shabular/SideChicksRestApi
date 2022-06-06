@@ -25,6 +25,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ShowService>();
 		builder.Services.AddSingleton<LocationService>();
 		builder.Services.AddSingleton<UserService>();
+		builder.Services.AddSingleton<NewsService>();
 
 		builder.Services.AddSingleton<ShowsViewModel>();
 		builder.Services.AddSingleton<BookingViewModel>();
@@ -33,6 +34,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<LoginViewModel>();
 		builder.Services.AddTransient<UserViewModel>();
 		builder.Services.AddTransient<UserManagementViewModel>();
+		builder.Services.AddTransient<LocationsViewModel>();
+		builder.Services.AddTransient<NewsViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<ShowDetailsPage>();
@@ -45,6 +48,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ManageUserPage>();
         builder.Services.AddTransient<RegistrationPage>();
         builder.Services.AddTransient<ShowsPage>();
+        builder.Services.AddTransient<AddLocationPage>();
+        builder.Services.AddTransient<AddNewsPage>();
+        builder.Services.AddTransient<ShowNewsPage>();
 
         return builder.Build();
 	}
