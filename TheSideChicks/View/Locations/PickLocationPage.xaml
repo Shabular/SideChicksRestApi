@@ -32,7 +32,7 @@
                                     Grid.Column="1"
                                     Padding="10">
                                     <Label Style="{StaticResource LargeLabel}" Text="venue name" />
-                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding id}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" />
 
 
                                 </VerticalStackLayout>

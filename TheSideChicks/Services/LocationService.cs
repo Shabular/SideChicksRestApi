@@ -76,24 +76,23 @@ namespace TheSideChicks.Services
         public async Task<List<Location>> GetLocationsByUserId(string id)
         {
 
-            if (locationList?.Count > 0)
-                locationList = new List<Location>();
+
+            var listOfLocations = new List<Location>();
 
 
             var locations = await GetLocations();
 
             if (locations?.Count > 0)
             {
-                foreach( Location userLlocation in locations)
+                foreach( Location location in locations)
                 {
-                    var location = locationList?.Find(l => l.userid == id);
-                    if (location != null)
-                        locationList.Add(location);
+                    if (location.userid == id)
+                    listOfLocations.Add(location);
                 }
-         
+                return listOfLocations;
             }
-            
-            return locationList;
+
+            return listOfLocations;
         }
 
 
