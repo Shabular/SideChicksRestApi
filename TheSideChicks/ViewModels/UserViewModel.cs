@@ -233,23 +233,23 @@ namespace TheSideChicks.ViewModels
                 await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
                 return;
             }*/
-            List<Location> userLocations = await locationService.GetLocationsByUserId(userId);
-
-            if (userLocations.Count == 0)
+            try
             {
-                await Shell.Current.DisplayAlert("Error!", $"please add a location first", "OK");
-                await Shell.Current.GoToAsync(nameof(AddLocationPage));
-
-            }
-
-            // go to locations page
-
-            await Shell.Current.GoToAsync($"{nameof(PickLocationPage)}", true,
+                List<Location> userLocations = await locationService.GetLocationsByUserId(userId);
+                await Shell.Current.GoToAsync($"{nameof(PickLocationPage)}", true,
 
                 new Dictionary<string, object>
                 {
-                    { "LocationsList", userLocations }
+                                { "LocationsList", userLocations }
                 });
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error!", $"please add a location first", "OK");
+                await Shell.Current.GoToAsync(nameof(AddLocationPage));
+            }
+
+
         }
 
 
