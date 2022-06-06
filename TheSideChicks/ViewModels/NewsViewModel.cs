@@ -19,7 +19,7 @@ namespace TheSideChicks.ViewModels
 
         [ObservableProperty]
         public News news;
-        public bool NewsNotFilled { get; set; }
+
 
 
         //IConnectivity connectivity;
@@ -36,18 +36,31 @@ namespace TheSideChicks.ViewModels
                 news = new News();
         }
 
-        public void isNews()
-        {
-            if (NewsList.Count == 0)
-                NewsNotFilled = true;
-            else
-                NewsNotFilled = false;
-        }
+
 
         [ICommand]
         public async void TakePhoto()
         {
-            var imageString = await imageController.TakePhoto();        }
+            var localFilePath = await imageController.TakePhoto();
+            var photoString = await imageController.ToBase64Photo(localFilePath);
+            news.image = photoString;
+        }
+
+
+        [ICommand]
+        public async Task<String> GetPhoto(News news)
+        {
+            var imageLocation = bandLogo;
+            try
+            {
+                imageLocation = await imageController.FromBase64Photo(news.image, "NewsItem", news.title);
+
+            } catch
+            {
+                Console.Write("Image not found");
+            }
+            return imageLocation;
+        }
         /*
                 [ICommand]
                 async Task GoToShowDetails(Show show)
@@ -94,6 +107,14 @@ namespace TheSideChicks.ViewModels
 
                 }*/
 
+        public void isNews()
+        {
+            if (NewsList.Count == 0)
+                NewsNotFilled = true;
+            else
+                NewsNotFilled = false;
+        }
+
         [ICommand]
         async Task GetNewsAsync()
         {
@@ -110,8 +131,11 @@ namespace TheSideChicks.ViewModels
                     NewsList.Clear();
 
                 foreach (var news in newsList)
+                {
+                    news.image = await GetPhoto(news);
                     NewsList.Add(news);
-                    
+                }
+
                 isNews();
             }
             catch (Exception ex)
@@ -139,7 +163,7 @@ namespace TheSideChicks.ViewModels
                
                 //here we should see if a location with same postal and number does not exist
                 news.userid = userID;
-                news.image = "test";
+                
                 var addedNews = newsService.AddNewsAsync(news);
                 await Shell.Current.GoToAsync(nameof(MembersPage));
 

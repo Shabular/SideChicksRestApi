@@ -14,6 +14,7 @@ namespace TheSideChicks.ViewModels
         UserService userService;
         ShowService showService;
         LocationService locationService;
+        NewsService newsService;
 
 
         public ObservableCollection<User> User { get; } = new();
@@ -30,7 +31,7 @@ namespace TheSideChicks.ViewModels
         public System.Windows.Input.ICommand LogIn { get; }
         public System.Windows.Input.ICommand Register { get; }
 
-        public LoginViewModel(UserService userService, ShowService showService, LocationService locationService)
+        public LoginViewModel(UserService userService, ShowService showService, LocationService locationService, NewsService newsService)
         {
             Title = "Log in";
 
@@ -40,7 +41,7 @@ namespace TheSideChicks.ViewModels
             this.userService = userService;
             this.showService = showService;
             this.locationService = locationService;
-
+            this.newsService = newsService;
         }
 
         private async void LogInAsync()
@@ -61,7 +62,7 @@ namespace TheSideChicks.ViewModels
                 Preferences.Set("userEmail", userInDatabase.email);
                 Preferences.Set("isLoggedIn", true);
 
-                UserViewModel userViewModel = new(userService, showService, locationService);
+                UserViewModel userViewModel = new(userService, showService, locationService, newsService);
 
 
                 await Shell.Current.GoToAsync(nameof(MembersPage), true,

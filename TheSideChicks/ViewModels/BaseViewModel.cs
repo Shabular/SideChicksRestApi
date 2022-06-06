@@ -28,6 +28,10 @@ namespace TheSideChicks.ViewModels
         public bool isLoggedIn => Preferences.Get("isLoggedIn", false);
         public bool isNotLoggedIn => !isLoggedIn;
 
+        public bool NewsNotFilled { get; set; }
+
+
+
         public string bandLogo => "sidechicks.PNG";
 
         [ICommand]
@@ -43,7 +47,7 @@ namespace TheSideChicks.ViewModels
             return;
         }
 
-
+        
 
     }
 }

@@ -27,7 +27,16 @@ namespace SideChicksRestApi.Controllers
         [HttpGet]
         public async Task<List<News>> Get()
         {
-            return await _context.News.OrderBy(n => n.Id).ToListAsync();
+            var newsList = await _context.News.OrderBy(n => n.Id).ToListAsync();
+
+            foreach (var newsItem in newsList)
+            {
+                //here we get the base 64
+                ImageController imageController = new();
+                newsItem.Image = await imageController.ToBase64Photo(newsItem.Image);
+            }
+
+            return newsList;
         }
 
         // GET: api/Shows/5
@@ -35,6 +44,9 @@ namespace SideChicksRestApi.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var news = await _context.News.FindAsync(id);
+            //here we get the base 64
+            ImageController imageController = new();
+            news.Image = await imageController.ToBase64Photo(news.Image);
             return news == null ? NotFound() : Ok(news);
         }
 
@@ -66,9 +78,18 @@ namespace SideChicksRestApi.Controllers
         [HttpPost]
         public async Task<News> Create(News news)
         {
+            string imageName = $"{news.Title}";
             
+            ImageController imageController = new();
+            var filepath = await imageController.FromBase64Photo(news.Image, imageName, "NewsPhoto");
+            
+            news.Image = filepath;
             _context.Add(news);
+
             await _context.SaveChangesAsync();
+            
+
+
 
             return news;
         }

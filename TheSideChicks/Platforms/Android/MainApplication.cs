@@ -8,6 +8,7 @@ using Android.Runtime;
 [assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
 [assembly: UsesPermission(Android.Manifest.Permission.Camera)]
 
+
 namespace TheSideChicks;
 
 [Application]

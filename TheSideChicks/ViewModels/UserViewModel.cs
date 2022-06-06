@@ -13,6 +13,7 @@ namespace TheSideChicks.ViewModels
         UserService userService;
         ShowService showService;
         LocationService locationService;
+        NewsService newsService;
 
         public string username = Preferences.Get("usernamePref", "");
         public bool isLoggedIn = Preferences.Get("isLoggedIn", true);
@@ -20,16 +21,20 @@ namespace TheSideChicks.ViewModels
         public ObservableCollection<Show> Shows { get; } = new();
         public ObservableCollection<ShowsViewModel> showsViewModel { get; } = new();
 
-        public UserViewModel(UserService userService, ShowService showService, LocationService locationService)
+        [ObservableProperty]
+        public List<News> newsList;
+
+        public UserViewModel(UserService userService, ShowService showService, LocationService locationService, NewsService newsService)
         {
-            
+
             Title = $"Welcom {username}";
             this.userService = userService;
             this.showService = showService;
             this.locationService = locationService;
+            this.newsService = newsService;
         }
 
-        
+
         [ICommand]
         async Task GetPendingShowsAsync()
         {
@@ -240,6 +245,45 @@ namespace TheSideChicks.ViewModels
             await Shell.Current.GoToAsync(nameof(AddLocationPage));
 
         }
+
+        [ICommand]
+        async Task GetNewsAsync()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+
+                IsBusy = true;
+                var newsList = await newsService.GetNews();
+
+                if (NewsList.Count != 0)
+                    NewsList.Clear();
+
+                foreach (var news in newsList)
+                    NewsList.Add(news);
+
+                isNews();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        public void isNews()
+        {
+            if (NewsList.Count == 0)
+                NewsNotFilled = true;
+            else
+                NewsNotFilled = false;
+        }
+
     }
     
 }
