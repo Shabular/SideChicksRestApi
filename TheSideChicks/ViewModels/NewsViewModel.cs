@@ -163,7 +163,7 @@ namespace TheSideChicks.ViewModels
             {
                
                 //here we should see if a location with same postal and number does not exist
-                news.userid = userID;
+                news.userid = userId;
                 
                 var addedNews = newsService.AddNewsAsync(news);
                 await Shell.Current.GoToAsync(nameof(MembersPage));

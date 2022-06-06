@@ -19,7 +19,7 @@ namespace TheSideChicks.ViewModels
         public ObservableCollection<Location> Locations { get; } = new();
 
 
-        //IConnectivity connectivity;
+        //IConnectivity connectivity;qsqs
 
         public LocationsViewModel(LocationService locationservice, UserService userService)
         {
@@ -51,7 +51,7 @@ namespace TheSideChicks.ViewModels
                 {
                     //here we should see if a location with same postal and number does not exist
                     User user = await userService.GetUser(Preferences.Get("userId", "Non Existent"));
-                    location.userid = userID;
+                    location.userid = userId;
                     location.email = userEmail;
                     var addedLocation = locationService.AddLocation(location);
                     await Shell.Current.GoToAsync(nameof(MembersPage));

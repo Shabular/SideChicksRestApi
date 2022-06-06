@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheSideChicks.Services;
 using TheSideChicks.View;
+using Location = TheSideChicks.Models.Location;
 
 namespace TheSideChicks.ViewModels
 {
@@ -24,6 +25,8 @@ namespace TheSideChicks.ViewModels
 
         [ObservableProperty]
         public News news;
+
+
 
 
         public UserViewModel(UserService userService, ShowService showService, LocationService locationService, NewsService newsService)
@@ -219,6 +222,37 @@ namespace TheSideChicks.ViewModels
                 IsBusy = false;
             }
         }
+
+
+        [ICommand]
+        async Task PickLocationAsync()
+        {
+            /*if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet issue", $"Check your internet and try again", "OK");
+                return;
+            }*/
+            List<Location> userLocations = await locationService.GetLocationsByUserId(userId);
+
+            if (userLocations.Count == 0)
+            {
+                await Shell.Current.DisplayAlert("Error!", $"please add a location first", "OK");
+                await Shell.Current.GoToAsync(nameof(AddLocationPage));
+
+            }
+
+            // go to locations page
+
+            await Shell.Current.GoToAsync($"{nameof(PickLocationPage)}", true,
+
+                new Dictionary<string, object>
+                {
+                    { "LocationsList", userLocations }
+                });
+        }
+
+
 
         [ICommand]
         async Task GoBookUsAsync()

@@ -31,7 +31,8 @@
 
                 <Label Text="Password"/>
                 <Entry Placeholder="TheSideChicks1!"
-                       IsPassword="{Binding password}"/>
+                       IsPassword="True"
+                       Text="{Binding password}"/>
 
                 <Button Text="Log in" 
                 Command="{Binding LogIn}"

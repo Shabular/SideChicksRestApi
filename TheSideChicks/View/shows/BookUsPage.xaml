@@ -25,10 +25,6 @@
         <ScrollView Grid.Column="0"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="0">
-                <Label Text="Venue name"/>
-                <Entry Placeholder="Venue name"
-                       Text="{Binding venueName}"
-                       />
 
                 <Label Text="Event name"/>
                 <Entry Placeholder="Show name"
@@ -38,34 +34,6 @@
                 <DatePicker Date="{Binding date}"
                             MinimumDate="{Binding minDate}"/>
                 
-                <Label Text="Your name"/>
-                <Entry Placeholder="Who is booking"
-                       Text="{Binding locationOwnerName}"/>
-
-                <VerticalStackLayout>
-                    <VerticalStackLayout Grid.Column="0">
-                        <Label Text="Street"/>
-                        <Entry Placeholder="Street"
-                                Text="{Binding street}"/>
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Grid.Column="1">
-                        <Label Text="number"/>
-                        <Entry Placeholder="3"
-                            Text="{Binding number}"/>
-                    </VerticalStackLayout>
-                </VerticalStackLayout>
-                
-                <Label Text="Postal Code"/>
-                <Entry Placeholder="postal number"
-                       Text="{Binding postalNumber}"/>
-
-                <Label Text="Phone number"/>
-                <Entry Placeholder="+31654567898"
-                       Text="{Binding phoneNumber}"/>
-
-                <Label Text="Email"/>
-                <Entry Placeholder="Henk@hotmail.com"
-                       Text="{Binding email}"/>
 
                 <Label Text="Image Link"/>
                 <Entry Placeholder="Place link to epic party at your venue"

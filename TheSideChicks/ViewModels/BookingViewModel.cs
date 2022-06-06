@@ -9,19 +9,27 @@ using Location = TheSideChicks.Models.Location;
 
 namespace TheSideChicks.ViewModels
 {
+
+    [QueryProperty("LocationsList", "LocationsList")] 
+    [QueryProperty("Location", "Location")] 
+
     public partial class BookingViewModel : BaseViewModel
     {
         ShowService showService;
         LocationService locationService;
 
         public ObservableCollection<Show> Show { get; } = new();
-        public ObservableCollection<Location> Location { get; } = new();
+
+        [ObservableProperty]
+        public List<Location> locationsList;
+
+        [ObservableProperty]
+        public Location location;
 
         // propperty binding
         public string showName { get; set; }
         public string image { get; set; }
         public string details{ get; set; }
-        public int locationId { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
         public DateTime date { get; set; }
@@ -47,28 +55,24 @@ namespace TheSideChicks.ViewModels
             this.showService = showService;
             this.locationService = locationService;
 
+            // here we get the locations from the user
+           
+
+        }
+
+        public BookingViewModel()
+        {
         }
 
         private async void AddNewBooking()
         {
-            var userId = Preferences.Get("userId", "test");
 
-            
-            var location = new Location
-            {
-                name = venueName,
-                userid = userId,
-                owner = locationOwnerName,
-                street = street,
-                number = number,
-                postalNumber = postalNumber,
-                phoneNumber = phoneNumber
-            };
 
             var show = new Show
             {
                 name = showName,
-                userid =userId,
+                userid = userId,
+                locationId = locationId,
                 image = image,
                 date = date,
                 details = details,
@@ -76,28 +80,26 @@ namespace TheSideChicks.ViewModels
                 accepted = false
             };
 
-            
-            // check if location already exists, if not add location
-            var addedLocation = await locationService.AddLocation(location);
-            
-            if (addedLocation is null)
-            {
-                addedLocation = await locationService.GetLocationByPostalNumber(location.postalNumber);
-            }
-
-            if (addedLocation == null)
-            {
-                await Shell.Current.DisplayAlert("Error!", $"The server could not save the location", "OK");
-                return;
-            }
-            show.locationId = addedLocation.id;
             // add location id to show and add show
             var addedShow = await showService.AddShowAsync(show);
 
-            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+            await Shell.Current.GoToAsync($"{nameof(MembersPage)}");
             
             return;
 
+        }
+
+        [ICommand]
+        private async void GoBookUs(Location location)
+        {
+
+            Preferences.Set("locationId", location.id);
+            await Shell.Current.GoToAsync($"{nameof(BookUsPage)}", true,
+
+                new Dictionary<string, object>
+                {
+                    { "Location", location }
+                });
         }
 
         [ICommand]

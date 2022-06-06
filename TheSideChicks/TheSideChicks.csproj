@@ -66,12 +66,18 @@
 	  <Compile Update="View\Locations\AddLocationPage.xaml.cs">
 	    <DependentUpon>AddLocationPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\Locations\PickLocationPage.xaml.cs">
+	    <DependentUpon>PickLocationPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\shows\ShowManagementPage.xaml.cs">
 	    <DependentUpon>ShowManagementPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\Locations\PickLocationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\News\AddNewsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

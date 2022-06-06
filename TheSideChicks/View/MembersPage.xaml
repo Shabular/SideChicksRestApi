@@ -17,8 +17,8 @@
     <ContentPage Title="Booking">
         <Grid >
             <VerticalStackLayout>
-                <Button Text="Book us" 
-                Command="{Binding GoBookUsCommand}"
+                <Button Text="Book us now" 
+                Command="{Binding PickLocationCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="0"
                 Grid.Column="0"

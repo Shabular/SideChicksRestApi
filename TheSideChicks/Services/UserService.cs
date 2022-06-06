@@ -111,6 +111,7 @@ namespace TheSideChicks.Services
 
             
             var userAccount = userList?.Find(u => u.username == user.username);
+            
             if (userAccount.password == user.password)
             {
                 return userAccount;
