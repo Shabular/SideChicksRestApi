@@ -83,7 +83,7 @@
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
             <Button Text="Show News" 
-                Command="{Binding NotImplementedCommand}"
+                Command="{Binding GetNewsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="2"

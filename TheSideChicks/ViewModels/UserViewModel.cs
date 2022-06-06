@@ -20,9 +20,11 @@ namespace TheSideChicks.ViewModels
 
         public ObservableCollection<Show> Shows { get; } = new();
         public ObservableCollection<ShowsViewModel> showsViewModel { get; } = new();
+        public ObservableCollection<News> NewsList { get; } = new();
 
         [ObservableProperty]
-        public List<News> newsList;
+        public News news;
+
 
         public UserViewModel(UserService userService, ShowService showService, LocationService locationService, NewsService newsService)
         {
@@ -105,7 +107,7 @@ namespace TheSideChicks.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get news: {ex.Message}", "OK");
             }
             finally
             {
@@ -265,11 +267,19 @@ namespace TheSideChicks.ViewModels
                     NewsList.Add(news);
 
                 isNews();
+
+
+                await Shell.Current.GoToAsync($"{nameof(ShowNewsPage)}", true,
+
+                new Dictionary<string, object>
+                {
+                    { "NewsList", NewsList }
+                });
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get news: {ex.Message}", "OK");
             }
             finally
             {

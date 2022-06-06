@@ -137,6 +137,7 @@ namespace TheSideChicks.ViewModels
                 }
 
                 isNews();
+
             }
             catch (Exception ex)
             {
