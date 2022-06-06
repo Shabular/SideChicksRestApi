@@ -1,4 +1,5 @@
-﻿using TheSideChicks.Services;
+﻿using TheSideChicks.Controllers;
+using TheSideChicks.Services;
 using TheSideChicks.View;
 
 namespace TheSideChicks;
@@ -26,6 +27,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<LocationService>();
 		builder.Services.AddSingleton<UserService>();
 		builder.Services.AddSingleton<NewsService>();
+
+		builder.Services.AddSingleton<ImageController>();
 
 		builder.Services.AddSingleton<ShowsViewModel>();
 		builder.Services.AddSingleton<BookingViewModel>();

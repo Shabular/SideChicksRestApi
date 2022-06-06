@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using TheSideChicks.Services;
 using TheSideChicks.View;
 using Microsoft.Maui.Media;
+using TheSideChicks.Controllers;
 
 namespace TheSideChicks.ViewModels
 {
     public partial class NewsViewModel : BaseViewModel
     {
         NewsService newsService;
+        ImageController imageController;
 
         public ObservableCollection<News> NewsList { get; } = new();
 
@@ -22,16 +24,16 @@ namespace TheSideChicks.ViewModels
 
         //IConnectivity connectivity;
 
-        public NewsViewModel(NewsService newsService)
+        public NewsViewModel(NewsService newsService, ImageController imageController)
         {
             isNews();
             Title = "News Finder";
             this.newsService = newsService;
+            this.imageController = imageController;
+
 
             if (news == null)
                 news = new News();
-
-
         }
 
         public void isNews()
@@ -45,22 +47,7 @@ namespace TheSideChicks.ViewModels
         [ICommand]
         public async void TakePhoto()
         {
-            if (MediaPicker.Default.IsCaptureSupported)
-            {
-                FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
-
-                if (photo != null)
-                {
-                    // save the file into local storage
-                    string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
-
-                    using Stream sourceStream = await photo.OpenReadAsync();
-                    using FileStream localFileStream = File.OpenWrite(localFilePath);
-
-                    await sourceStream.CopyToAsync(localFileStream);
-                }
-            }
-        }
+            var imageString = await imageController.TakePhoto();        }
         /*
                 [ICommand]
                 async Task GoToShowDetails(Show show)

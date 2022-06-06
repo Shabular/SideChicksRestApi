@@ -47,8 +47,8 @@
             <VerticalStackLayout    Padding="10">
 
 
-                <Label Text="Upload a picture"/>
-                <Button Text="Add location" 
+                <Label Text="Please supply a picture"/>
+                <Button Text="Upload a picture" 
                 Command="{Binding TakePhotoCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 VerticalOptions="End"
