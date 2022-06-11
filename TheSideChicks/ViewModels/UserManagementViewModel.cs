@@ -164,6 +164,24 @@ namespace TheSideChicks.ViewModels
                 if ((user.username != null) && (user.password != null))
                 {
                     user = await userService.AddUserAsync(user);
+                    // here we check if the user was created correctly if not tell the user
+                    //if username or user email = taken stop
+                    // if mail is not eligable stop
+
+                    if (user.username == "Already Taken")
+                    {
+                        await Shell.Current.DisplayAlert("Error!", $"Unable to add user, this username: {user.username} is taken", "OK");
+                        return;
+                    } else if (user.email == "Already Taken")
+                    {
+                        await Shell.Current.DisplayAlert("Error!", $"Unable to add user, the email: {user.email}  is taken", "OK");
+                        return;
+                    } else if (user.email == "Not eligable")
+                    {
+                        await Shell.Current.DisplayAlert("Error!", $"that was no emailaddress we understand, please try something like\n {user.firstname}@hotmail.com", "OK");
+                        return;
+                    }
+
                     await Shell.Current.GoToAsync(nameof(MembersPage));
                 }
                     

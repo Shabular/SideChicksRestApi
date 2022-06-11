@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideChicksRestApi", "SideChicksRestApi\SideChicksRestApi.csproj", "{2A41F982-2F5C-41AC-92FD-688CBE8C7723}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideChicksRestTests", "SideChicksRestTests\SideChicksRestTests.csproj", "{1884EA22-618A-47D7-953D-0A7968A0E8DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2A41F982-2F5C-41AC-92FD-688CBE8C7723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A41F982-2F5C-41AC-92FD-688CBE8C7723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A41F982-2F5C-41AC-92FD-688CBE8C7723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1884EA22-618A-47D7-953D-0A7968A0E8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1884EA22-618A-47D7-953D-0A7968A0E8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1884EA22-618A-47D7-953D-0A7968A0E8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1884EA22-618A-47D7-953D-0A7968A0E8DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

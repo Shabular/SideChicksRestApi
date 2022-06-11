@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SideChicksRestApi.Data;
+using SideChicksRestApi.Helpers;
 using SideChicksRestApi.Models;
 using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
@@ -16,6 +17,9 @@ namespace SideChicksRestApi.Controllers;
         public UserController(ApplicationDbContext context)
         {
             _context = context;
+
+            SeedUsers(_context);
+
         }
         
         // GET: api/Locations
@@ -28,6 +32,30 @@ namespace SideChicksRestApi.Controllers;
         [HttpPost]
         public async Task<User> Create(User user)
         {
+            // check if username is taken and if email is valid
+            var userNameCheck = _context.Users.ToList()
+                .Find(u => u.UserName == user.UserName);
+
+            if (userNameCheck != null)
+            {
+                user.UserName = "Already Taken";
+                return user;
+            }
+
+            // check if username is taken and if email is valid
+            var userMailCheck = _context.Users.ToList()
+                .Find(u => u.Email == user.Email);
+
+            if (userMailCheck != null)
+            {
+                user.Email = "Already Taken";
+                return user;
+            }
+
+            user.Email = EmailHelper.userMailCheck(user.Email);
+            if (user.Email == "Not eligable")
+                return user;
+            
             var userToAdd = new User
             {
                 UserName = user.UserName,
@@ -67,4 +95,25 @@ namespace SideChicksRestApi.Controllers;
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        
+        private static void SeedUsers(ApplicationDbContext context)
+        {
+            var userList = context.Users.ToList();
+
+            var admin = userList.Find(u => u.UserName == "admin");
+            if (admin == null)
+            {
+                var user = new User
+                {
+                    UserName = "admin",
+                    FirstName = "AdminAccount",
+                    Password = "Welkom01!"
+                    
+                };
+                context.Add(user);
+                context.SaveChangesAsync();
+            }
+            
+        }
+        
 }
