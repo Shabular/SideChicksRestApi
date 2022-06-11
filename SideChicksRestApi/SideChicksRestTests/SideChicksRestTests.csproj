@@ -20,4 +20,8 @@
       <ProjectReference Include="..\SideChicksRestApi\SideChicksRestApi.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="Images\sidechicks.PNG" />
+    </ItemGroup>
+
 </Project>

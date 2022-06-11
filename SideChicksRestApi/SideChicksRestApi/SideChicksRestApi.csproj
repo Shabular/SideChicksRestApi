@@ -23,11 +23,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Images" />
+      <Compile Remove="SeedData.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="SeedData.cs" />
+      <Content Include="Images\sidechicks.PNG" />
     </ItemGroup>
 
 </Project>
