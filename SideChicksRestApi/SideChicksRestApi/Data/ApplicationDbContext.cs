@@ -10,11 +10,11 @@ public class ApplicationDbContext : DbContext
         : base(options)
     {
     }
-
+    
     public ApplicationDbContext()
     {
-        throw new NotImplementedException();
     }
+    
 
     public DbSet<Show>? Shows { get; set; }
     public DbSet<Location> Locations { get; set; }

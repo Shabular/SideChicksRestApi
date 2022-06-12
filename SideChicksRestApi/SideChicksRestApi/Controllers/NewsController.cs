@@ -50,30 +50,7 @@ namespace SideChicksRestApi.Controllers
             return news == null ? NotFound() : Ok(news);
         }
 
-        /*// POST: api/Shows
-        [HttpPost]
-        public async Task<Location> Create(string name, string owner, string street, int number, string postalNumber, int phoneNumber, string email)
-        {
-
-            var location = new Location()
-            {
-        
-                Name = name,
-                Owner = owner,
-                Street = street,
-                Number = number,
-                PostalNumber = postalNumber,
-                PhoneNumber = phoneNumber,
-                Email = email
-                
-            };
-            
-            _context.Add(location);
-            await _context.SaveChangesAsync();
-
-            return location;
-        }*/
-        
+     
         // POST: api/Shows
         [HttpPost]
         public async Task<News> Create(News news)

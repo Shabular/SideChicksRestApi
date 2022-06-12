@@ -96,24 +96,34 @@ namespace SideChicksRestApi.Controllers;
             return NoContent();
         }
         
-        private static void SeedUsers(ApplicationDbContext context)
+        public static bool SeedUsers(ApplicationDbContext context)
         {
-            var userList = context.Users.ToList();
+            var userList = new List<User>();
 
-            var admin = userList.Find(u => u.UserName == "admin");
-            if (admin == null)
+            try
             {
-                var user = new User
-                {
-                    UserName = "admin",
-                    FirstName = "AdminAccount",
-                    Password = "Welkom01!"
-                    
-                };
-                context.Add(user);
-                context.SaveChangesAsync();
+                userList = context.Users.ToList();
             }
+            catch
+            {
+                var admin = userList.Find(u => u.UserName == "admin");
+                if (admin == null)
+                {
+                    var user = new User
+                    {
+                        UserName = "admin",
+                        FirstName = "AdminAccount",
+                        Password = "Welkom01!"
+                    
+                    };
+                    context.Add(user);
+                    context.SaveChangesAsync();
+                }
+
+            }
+
             
+            return true;
         }
         
 }
