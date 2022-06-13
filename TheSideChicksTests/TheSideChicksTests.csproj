@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	  <UseMaui>true</UseMaui>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\AppIcon\appicon.svg" />
+    <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+    <None Remove="Resources\Fonts\OpenSans-Semibold.ttf" />
+    <None Remove="Resources\Images\dotnet_bot.svg" />
+    <None Remove="Resources\Images\sidechicks.png" />
+    <None Remove="Resources\Raw\AboutAssets.txt" />
+    <None Remove="Resources\Splash\splash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiAsset Include="Resources\Raw\AboutAssets.txt">
+      <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </MauiAsset>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
+    <MauiFont Include="Resources\Fonts\OpenSans-Semibold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg">
+      <Color>#512BD4</Color>
+      <ForegroundFile>Resources\AppIcon\appiconfg.svg</ForegroundFile>
+    </MauiIcon>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiImage Include="Resources\Images\dotnet_bot.svg">
+      <BaseSize>168,208</BaseSize>
+    </MauiImage>
+    <MauiImage Include="Resources\Images\sidechicks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiSplashScreen Include="Resources\Splash\splash.svg">
+      <Color>#512BD4</Color>
+      <BaseSize>128,128</BaseSize>
+    </MauiSplashScreen>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TheSideChicks\TheSideChicks.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiXaml Update="Resources\Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Resources\Styles\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+
+</Project>
