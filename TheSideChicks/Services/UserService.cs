@@ -82,6 +82,9 @@ namespace TheSideChicks.Services
             {
                 var createdUserString = await response.Content.ReadAsStringAsync();
                 user = JsonConvert.DeserializeObject<User>(createdUserString);                
+            } else
+            {
+                user = null;
             }
 
             return user;
