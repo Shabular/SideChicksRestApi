@@ -75,7 +75,6 @@ namespace TheSideChicks.ViewModels
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.DisplayAlert("Error!", $"An unexpected error occurred", "OK");
-                throw ex;
             }
 
         }

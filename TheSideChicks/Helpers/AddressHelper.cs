@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TheSideChicks.Helpers
 {
-    internal class AddressHelper
+    public partial class AddressHelper
     {
         
 
