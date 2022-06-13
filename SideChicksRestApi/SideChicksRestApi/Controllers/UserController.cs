@@ -17,9 +17,11 @@ namespace SideChicksRestApi.Controllers;
         public UserController(ApplicationDbContext context)
         {
             _context = context;
-
-            SeedUsers(_context);
-
+            var userList = context.Locations.ToList();
+            if (userList.Count == 0)
+            {
+                SeedUsers(_context);
+            }
         }
         
         // GET: api/Locations
@@ -111,9 +113,11 @@ namespace SideChicksRestApi.Controllers;
                 {
                     var user = new User
                     {
-                        UserName = "admin",
-                        FirstName = "AdminAccount",
-                        Password = "Welkom01!"
+                        UserName    = "admin",
+                        FirstName   = "AdminAccount",
+                        Password    = "Welkom01!",
+                        Email       = "Admin@sidechicks.nl",
+                        IsAdmin     = true
                     
                     };
                     context.Add(user);

@@ -21,6 +21,7 @@ namespace SideChicksRestApi.Controllers
         public ShowsController(ApplicationDbContext context)
         {
             _context = context;
+            
         }
         
         // GET: api/Shows
@@ -70,5 +71,6 @@ namespace SideChicksRestApi.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+      
     }
 }

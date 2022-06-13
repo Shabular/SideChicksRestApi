@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheSideChicks.Helpers;
 using TheSideChicks.Services;
 using TheSideChicks.View;
 using Location = TheSideChicks.Models.Location;
@@ -45,6 +46,14 @@ namespace TheSideChicks.ViewModels
 
             try
             {
+                location.postalNumber = AddressHelper.isDutchPostalCode(location.postalNumber);
+                if (location.postalNumber == "NotEligable")
+                {
+                    await Shell.Current.DisplayAlert("Error!", $"Unable to add location,this postal and number is not dutch", "OK");
+                    return;
+                }
+                    
+
                 bool doesExist = await locationService.CheckIfLocationExists(location); 
 
                 if (!doesExist)
@@ -66,6 +75,7 @@ namespace TheSideChicks.ViewModels
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.DisplayAlert("Error!", $"An unexpected error occurred", "OK");
+                throw ex;
             }
 
         }

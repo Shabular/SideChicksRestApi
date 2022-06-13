@@ -21,6 +21,11 @@ namespace SideChicksRestApi.Controllers
         public NewsController(ApplicationDbContext context)
         {
             _context = context;
+            var newsList = context.News.ToList();
+            if (newsList.Count == 0)
+            {
+                SeedNews(_context);
+            }
         }
         
         // GET: api/Locations
@@ -87,6 +92,33 @@ namespace SideChicksRestApi.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        
+        public static bool SeedNews(ApplicationDbContext context)
+        {
+
+            try
+            {
+                var userList = context.Users.ToList();
+                var adminUser = userList.Find(u => u.UserName is "admin");
+                var newsItem = new News
+                {
+                    Userid = adminUser.Id,
+                    Title = "One day, maybe",
+                    Details = "No news jet, this will be posted one day",
+                    Image = "..\\Images\\sidechicks.png"
+                };
+                context.Add(newsItem);
+                context.SaveChangesAsync();
+                
+            }
+            catch
+            {
+                throw new InvalidOperationException();
+            }
+
+
+            return true;
         }
     }
 }

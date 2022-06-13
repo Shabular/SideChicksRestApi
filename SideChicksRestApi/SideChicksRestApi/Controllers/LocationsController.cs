@@ -20,7 +20,13 @@ namespace SideChicksRestApi.Controllers
         
         public LocationsController(ApplicationDbContext context)
         {
+            Console.WriteLine("test");
             _context = context;
+            var locationList = context.Locations.ToList();
+            if (locationList.Count == 0)
+            {
+                SeedLocations(_context);
+            }
         }
         
         // GET: api/Locations
@@ -66,5 +72,42 @@ namespace SideChicksRestApi.Controllers
         public void Delete(int id)
         {
         }
+        
+        public static bool SeedLocations(ApplicationDbContext context)
+        {
+
+            try
+            {
+                
+                    
+                    var userList = context.Users.ToList();
+                    var adminUser = userList.Find(u => u.UserName is "admin");
+                    var location = new Location
+                    {
+                        UserId  = adminUser.Id,
+                        Name    = "Test Locatie",
+                        Owner   = $"{adminUser.FirstName} {adminUser.LastName}",
+                        City    = "Breda",
+                        Street  = "havenmarkt",
+                        Number  = 7,
+                        PostalNumber = "1234KK",
+                        PhoneNumber = 0654737288,
+                        Email   = adminUser.Email
+                    };
+                    context.Add(location);
+                    context.SaveChangesAsync();
+                
+            }
+            catch
+            {
+                throw new InvalidOperationException();
+            }
+
+
+            return true;
+        }
+        
     }
+    
+    
 }

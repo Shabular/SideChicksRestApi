@@ -104,6 +104,7 @@ namespace TheSideChicks.Services
             if (locationExists != null)
                 return locationExists;
 
+
             var response = await httpClient.PostAsJsonAsync(Url, location);
 
             if (response.IsSuccessStatusCode)

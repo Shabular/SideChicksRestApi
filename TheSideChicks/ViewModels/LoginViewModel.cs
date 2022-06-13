@@ -44,7 +44,7 @@ namespace TheSideChicks.ViewModels
             this.newsService = newsService;
         }
 
-        private async void LogInAsync()
+        public async void LogInAsync()
         {
 
             var user = new User
@@ -56,6 +56,12 @@ namespace TheSideChicks.ViewModels
             try
             {
                 var userInDatabase = await userService.CheckIfUserInDatabase(user);
+                if (userInDatabase.id == null)
+                {
+                    await Shell.Current.DisplayAlert("Nice trye", $"Thats not you password", "OK");
+                    return;
+                }
+                   
                 Preferences.Set("username", userInDatabase.username);
                 Preferences.Set("isAdmin", userInDatabase.isadmin);
                 Preferences.Set("userId", userInDatabase.id);
@@ -75,7 +81,7 @@ namespace TheSideChicks.ViewModels
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Account not allowed", $"Try other credentials if you dare", "OK");
+                await Shell.Current.DisplayAlert("Nice trye", $"Thats not you password", "OK");
                 return;
             }
 

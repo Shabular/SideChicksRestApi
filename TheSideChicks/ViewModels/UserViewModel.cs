@@ -17,7 +17,7 @@ namespace TheSideChicks.ViewModels
         NewsService newsService;
 
         public string username = Preferences.Get("usernamePref", "");
-        public bool isLoggedIn = Preferences.Get("isLoggedIn", true);
+
 
         public ObservableCollection<Show> Shows { get; } = new();
         public ObservableCollection<ShowsViewModel> showsViewModel { get; } = new();
@@ -238,23 +238,25 @@ namespace TheSideChicks.ViewModels
                 if (IsBusy)
                     return;
 
+                var userId = Preferences.Get("userId", "test");
                 List<Location> userLocations = await locationService.GetLocationsByUserId(userId);
-                Console.Write("");
+                if (userLocations.Count >= 1)
+                {
+                    await Shell.Current.GoToAsync($"{nameof(PickLocationPage)}", true,
 
-                await Shell.Current.GoToAsync($"{nameof(PickLocationPage)}", true,
-
-                        new Dictionary<string, object>
-                        {
+                       new Dictionary<string, object>
+                       {
                                         { "LocationsList", userLocations }
-                        });
+                       });
+                }
 
-                
+               
 
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error!", $"please add a location first", "OK");
-                await Shell.Current.GoToAsync(nameof(AddLocationPage));
+                await Shell.Current.DisplayAlert("Error!", $"an unexpected error occured", "OK");
+                await Shell.Current.GoToAsync(nameof(MembersPage));
             }
 
 
