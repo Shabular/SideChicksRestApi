@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheSideChicks.View.BandInfoPage"
+             xmlns:model="clr-namespace:TheSideChicks.Models"
+             xmlns:viewmodel="clr-namespace:TheSideChicks.ViewModels"
+             x:DataType="viewmodel:BandInfoViewModel"
+             Title="Band Info">
+    
+    <StackLayout>
+        <Label Text="WElkome to the side chicks"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+        <Button Text="website" 
+                Command="{Binding GoToFaceBookCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button Text="social media" 
+                Command="{Binding GoToInstagramCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+
+        <Button Text="mail us" 
+                Command="{Binding GoEmailCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+    </StackLayout>
+</ContentPage>
