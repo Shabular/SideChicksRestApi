@@ -144,14 +144,13 @@ namespace TheSideChicks.ViewModels
                     await locationHelper.GetMaps(location);
                 }
 
-                await Shell.Current.DisplayAlert("Error!", location.ToString(), "OK");
 
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows", "OK");
             }
             finally
             {

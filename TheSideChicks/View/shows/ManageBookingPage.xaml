@@ -40,25 +40,15 @@
                     <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
                        Style="{StaticResource LargeLabel}"/>
 
-                    <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}'}"
+                    <Label Text="{Binding ShowTime.show.accepted, StringFormat='accepted: {0}'}"
                        Style="{StaticResource LargeLabel}"/>
-
-                    <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
-
-                    <Label Text="{Binding ShowTime.location.street, StringFormat='Adres: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
-
-                    <Label Text="{Binding ShowTime.location.postalNumber, StringFormat='Postal: {0}'}"
-                       Style="{StaticResource LargeLabel}"/>
-
-                    <Label Text="{Binding ShowTime.location.email, StringFormat='{0}'}"
-                       Style="{StaticResource LargeLabel}"/>
+                    
+                    
 
 
                     <Label Padding="10"
                            Style="{StaticResource LargeLabel}"
-                            Text="{Binding ShowTime.show.details}"/>
+                            Text="{Binding ShowTime.show.details, StringFormat='Show details: {0}'}"/>
                 </VerticalStackLayout>
 
 
@@ -75,6 +65,7 @@
                 Margin="8"/>
             
             <Button Text="Delete Booking" 
+                    IsVisible="{Binding isAdmin}"
                 CommandParameter="{Binding ShowTime.show}"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=DeleteBookingCommand}"
                 IsEnabled="{Binding IsNotBusy}"
@@ -84,13 +75,23 @@
                 Margin="8"/>
             
             <Button Text="back to the members page" 
+                    IsVisible="{Binding isLoggedIn}"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=BackToMembersPageCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="3"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
-            
+
+            <Button Text="Navigate" 
+                    IsVisible="{Binding isLoggedIn}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShowDetailsViewModel}},Path=GetLocationShowsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="3"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
 
         </VerticalStackLayout>
     </ScrollView>

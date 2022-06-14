@@ -179,6 +179,7 @@ namespace TheSideChicks.ViewModels
 
         }
         
+      
         [ICommand]
         async Task GetUsersAsync()
         {
