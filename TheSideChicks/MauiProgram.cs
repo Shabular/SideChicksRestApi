@@ -39,6 +39,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<UserManagementViewModel>();
 		builder.Services.AddTransient<LocationsViewModel>();
 		builder.Services.AddTransient<NewsViewModel>();
+		builder.Services.AddTransient<BandInfoViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<ShowDetailsPage>();
@@ -55,6 +56,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AddNewsPage>();
         builder.Services.AddTransient<ShowNewsPage>();
         builder.Services.AddTransient<PickLocationPage>();
+        builder.Services.AddTransient<BandInfoPage>();
 
         return builder.Build();
 	}

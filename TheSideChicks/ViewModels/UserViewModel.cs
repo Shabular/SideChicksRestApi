@@ -118,6 +118,29 @@ namespace TheSideChicks.ViewModels
             }
         }
         
+        [ICommand]
+        async Task GoBandInfoAsync()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+                IsBusy = true;
+
+                await Shell.Current.GoToAsync(nameof(BandInfoPage));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get band info: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        
         
 
         [ICommand]

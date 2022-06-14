@@ -65,6 +65,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\BandInfo\BandInfoPage.xaml.cs">
+	    <DependentUpon>BandInfoPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\Locations\AddLocationPage.xaml.cs">
 	    <DependentUpon>AddLocationPage.xaml</DependentUpon>
 	  </Compile>
@@ -77,6 +80,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\BandInfo\BandInfoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Locations\PickLocationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
