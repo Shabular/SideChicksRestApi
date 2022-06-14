@@ -66,7 +66,12 @@
             </Grid>
 
             <Button Text="Go Back"
+                    Style="{StaticResource ButtonOutline}"
                         Command="{Binding GoBackCommand}" />
+                
+            <Button Text="Navigate"
+                    Style="{StaticResource ButtonOutline}"
+                        Command="{Binding GetLocationShowsCommand}" />
 
 
         </VerticalStackLayout>
