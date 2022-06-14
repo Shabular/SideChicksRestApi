@@ -32,6 +32,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
+                
 
                 <Button Text="Accepted bookings" 
                 Command="{Binding GetAcceptedShowsCommand}"
@@ -76,6 +77,7 @@
         <VerticalStackLayout>
             <Button
                 Text="add news" 
+                IsVisible="{Binding isAdmin}"
                 Command="{Binding GoToNewsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"

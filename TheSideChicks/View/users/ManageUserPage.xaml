@@ -8,19 +8,22 @@
                 Title="{Binding Title}">
     <Grid
         
-        ColumnDefinitions="*,*"
+        ColumnDefinitions="*,*,*,*,*"
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
         <Image Aspect="Fill"
                HeightRequest="150"
                WidthRequest="200"
-               Grid.Column="0"
+               Grid.Column="1"
+               Grid.ColumnSpan="3"
                Grid.Row="0"
                 Source="sidechicks.PNG"
             
                                        />
-        <ScrollView Grid.Column="0"
+        <ScrollView                
+            Grid.Column="1"
+               Grid.ColumnSpan="3"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="0">
                 <Label Text="Firstname"/>
@@ -36,6 +39,19 @@
                 <Entry Placeholder="{Binding User.instrument}"
                        Text="{Binding User.instrument}"/>
 
+                <Label Text="username"/>
+                <Entry Placeholder="{Binding User.username}"
+                       Text="{Binding User.username}"/>
+
+                <Label Text="email"/>
+                <Entry Placeholder="{Binding User.email}"
+                       Text="{Binding User.email}"/>
+
+                <Label Text="Password"/>
+                <Entry Placeholder="{Binding User.password}"
+                       Text="{Binding User.password}"
+                       IsPassword="true"/>
+
 
                 <Button Text="change user" 
                     CommandParameter="{Binding User}"
@@ -46,7 +62,7 @@
                     Style="{StaticResource ButtonOutline}"
                     Margin="8"/>
 
-                <Button Text="{Binding User.isadmin, StringFormat='This user is bandmamber = {0} .... change this now'}"
+                <Button Text="{Binding User.isadmin, StringFormat='is Admin = {0}'}"
                         CommandParameter="{Binding User}"
                         Command="{Binding AddAssAdminCommand}"
                         IsEnabled="{Binding IsNotBusy}"
