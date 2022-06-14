@@ -50,7 +50,7 @@ namespace TheSideChicks.ViewModels
             {
                 IsBusy = true;
 
-                ShowsViewModel showsViewModel = new(showService, locationService);
+                ShowsViewModel showsViewModel = new(showService, locationService, geolocation);
                 var shows = await showService.GetShows();
 
                 if (Shows.Count != 0)
@@ -130,7 +130,7 @@ namespace TheSideChicks.ViewModels
         {
             IsBusy = true;
 
-            ShowsViewModel showsViewModel = new(showService, locationService);
+            ShowsViewModel showsViewModel = new(showService, locationService, geolocation);
             var shows = await showService.GetShows();
 
             if (Shows.Count != 0)

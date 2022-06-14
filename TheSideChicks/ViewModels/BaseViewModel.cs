@@ -19,7 +19,7 @@ namespace TheSideChicks.ViewModels
         string title;
 
         public bool IsNotBusy => !IsBusy;
-
+        public IGeolocation geolocation;
         public bool isAdmin => Preferences.Get("isAdmin", false);
         public bool isNotAdmin => !isAdmin;
         public string userId => Preferences.Get("userId", "not found");

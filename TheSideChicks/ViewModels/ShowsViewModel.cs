@@ -12,22 +12,24 @@ namespace TheSideChicks.ViewModels
     {
         ShowService showService;
         LocationService locationService;
+
+        
         
         public ObservableCollection<Show> Shows { get; } = new();
 
         public bool ShowsNotFilled { get; set; }
 
 
+
         //IConnectivity connectivity;
 
-        public ShowsViewModel(ShowService showService, LocationService locationservice)
+        public ShowsViewModel(ShowService showService, LocationService locationservice, IGeolocation geolocation)
         {
-            isShows(); 
+            isShows();
             Title = "Shows Finder";
             this.locationService = locationservice;
             this.showService = showService;
-
-            
+            this.geolocation = geolocation;
         }
 
         public void isShows()

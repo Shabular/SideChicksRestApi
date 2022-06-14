@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheSideChicks.Helpers;
 using TheSideChicks.Services;
 using TheSideChicks.View;
+using Location = Microsoft.Maui.Devices.Sensors.Location;
 
 namespace TheSideChicks.ViewModels
 {
@@ -17,11 +19,19 @@ namespace TheSideChicks.ViewModels
         ShowService showService;
         LocationService locationService;
 
-        public ShowDetailsViewModel(ShowService showService, LocationService locationService)
+        public LocationHelper locationHelper;
+        IMap map;
+
+        public ShowDetailsViewModel(ShowService showService, LocationService locationService, IGeolocation geolocation, IMap map)
         {
             Title = "Lets Go!";
             this.showService = showService;
             this.locationService = locationService;
+            this.geolocation = geolocation;
+
+            if (locationHelper == null)
+                locationHelper = new LocationHelper(geolocation, map);
+            this.map = map;
         }
 
 
@@ -106,6 +116,47 @@ namespace TheSideChicks.ViewModels
         async Task BackToMembersPage()
         {
             await Shell.Current.GoToAsync($"{nameof(MembersPage)}");
+        }
+
+        [ICommand]
+        async Task GetLocationShowsAsync()
+        {
+
+            if (IsBusy || showTime == null)
+            {
+                await Shell.Current.DisplayAlert("Error!", $"now show was found", "OK");
+                return;
+
+            }
+
+            try
+            {
+                IsBusy = true;
+                Location location = null;
+                if (geolocation != null)
+                {
+                    location = await locationHelper.GetLocationFromShow(ShowTime.location);
+                    
+                } 
+
+                if (location != null)
+                {
+                    await locationHelper.GetMaps(location);
+                }
+
+                await Shell.Current.DisplayAlert("Error!", location.ToString(), "OK");
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get shows: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
     }
