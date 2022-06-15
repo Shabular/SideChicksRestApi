@@ -33,9 +33,9 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\skull.svg" ForegroundFile="Resources\AppIcon\skull.svg" IsAppIcon="true" Color="orange" />
+		<MauiIcon Include="Resources\AppIcon\skull.svg" ForegroundFile="Resources\AppIcon\sidechicks.svg" IsAppIcon="true" Color="orange" />
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\sidechicks.svg" Color="Orange" BaseSize="128,128" />
+		<MauiImage Include="Resources\Splash\sidechicks.svg" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -60,7 +60,6 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\sidechicks.PNG" />
 	  <None Remove="Resources\Images\sidechicks.svg" />
-	  <None Remove="Resources\Images\skull.jpg" />
 	  <None Remove="Resources\Images\skull.svg" />
 	</ItemGroup>
 
