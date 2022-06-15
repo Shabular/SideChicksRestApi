@@ -9,6 +9,7 @@
 
     <Grid
         ColumnDefinitions="*,*,*"
+        Background="{StaticResource LightBackground}"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
