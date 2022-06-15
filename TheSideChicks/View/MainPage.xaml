@@ -15,7 +15,7 @@
 
         <Image Aspect="AspectFill"
                Grid.ColumnSpan="3"
-               Grid.RowSpan="*"
+               Grid.RowSpan="3"
                Source="skull.svg"
             
                                        />
