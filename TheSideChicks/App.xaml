@@ -15,11 +15,6 @@
             <Color x:Key="DarkBackground">Gray</Color>
 
 
-            <Image  
-               x:Key="BackgroundLight" 
-               Source="\Resources\Images\sidechicks.png"/>
-
-
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"
                         Value="{StaticResource LightBackground}" />

@@ -105,24 +105,24 @@ namespace SideChicksRestApi.Controllers;
             try
             {
                 userList = context.Users.ToList();
+                var admin = userList.Find(u => u.UserName == "admin");
+                var user = new User
+                {
+                    UserName    = "admin",
+                    FirstName   = "AdminAccount",
+                    Password    = "Welkom01!",
+                    Email       = "Admin@sidechicks.nl",
+                    IsAdmin     = true
+                    
+                };
+                context.Add(user);
+                context.SaveChangesAsync();
             }
             catch
             {
-                var admin = userList.Find(u => u.UserName == "admin");
-                if (admin == null)
-                {
-                    var user = new User
-                    {
-                        UserName    = "admin",
-                        FirstName   = "AdminAccount",
-                        Password    = "Welkom01!",
-                        Email       = "Admin@sidechicks.nl",
-                        IsAdmin     = true
-                    
-                    };
-                    context.Add(user);
-                    context.SaveChangesAsync();
-                }
+                Console.WriteLine("Seeding failed");
+
+
 
             }
 

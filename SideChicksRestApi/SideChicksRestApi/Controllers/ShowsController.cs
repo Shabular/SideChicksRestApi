@@ -82,10 +82,23 @@ namespace SideChicksRestApi.Controllers
 
             try
             {
+                var userList = context.Users.ToList();
+                if (userList.Count == 0)
+                {
+                    UserController.SeedUsers(context);
+                    userList = context.Users.ToList();
+                }
+                
                 var locationList = context.Locations.ToList();
+                if (locationList.Count == 0)
+                {
+                    LocationsController.SeedLocations(context);
+                    locationList = context.Locations.ToList();
+                }
                 var testLocation = locationList.Find(l => l.Name is "Test Locatie");
                     
-                var userList = context.Users.ToList();
+               
+                    
                 var adminUser = userList.Find(u => u.UserName is "admin");
                 var show = new Show()
                 {

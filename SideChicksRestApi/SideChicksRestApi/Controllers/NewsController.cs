@@ -100,6 +100,10 @@ namespace SideChicksRestApi.Controllers
             try
             {
                 var userList = context.Users.ToList();
+                if (userList.Count == 0)
+                {
+                    
+                }
                 var adminUser = userList.Find(u => u.UserName is "admin");
                 var newsItem = new News
                 {

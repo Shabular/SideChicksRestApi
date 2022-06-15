@@ -9,10 +9,17 @@
 
     <Grid
         ColumnDefinitions="*,*,*"
-        Background="{StaticResource LightBackground}"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
+
+        <Image Aspect="AspectFill"
+               Grid.ColumnSpan="3"
+               Grid.RowSpan="*"
+               Source="skull.svg"
+            
+                                       />
+
 
         <VerticalStackLayout IsVisible="{Binding ShowsNotFilled}"
                                     Grid.ColumnSpan="3"
