@@ -33,13 +33,13 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\skull.svg" ForegroundFile="Resources\AppIcon\sidechicks.svg" IsAppIcon="true" Color="orange" />
+		<MauiIcon Include="Resources\AppIcon\skull.svg" ForegroundFile="Resources\AppIcon\skull.svg" IsAppIcon="true" Color="orange" />
 		<!-- Splash Screen -->
-		<MauiImage Include="Resources\Splash\sidechicks.svg" />
+		<MauiSplashScreen Include="Resources\Splash\sidechicks.png" color="orange"/>
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\sidechicks.svg" BaseSize="168,208" />
+		<MauiImage Update="Resources\Images\sidechicks.png"/>
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -59,7 +59,6 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\sidechicks.PNG" />
-	  <None Remove="Resources\Images\sidechicks.svg" />
 	  <None Remove="Resources\Images\skull.svg" />
 	</ItemGroup>
 

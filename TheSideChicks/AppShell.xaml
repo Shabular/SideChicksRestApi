@@ -26,6 +26,8 @@
 
 
 
+
+
     <TabBar IsVisible="{Binding isNotLogedIn}">
         <Tab Title="Shows"
              IsVisible="{Binding isLoggedIn}">
