@@ -9,20 +9,29 @@
                 Title="{Binding Title}">
     <Grid
         
-        ColumnDefinitions="*,*"
+        ColumnDefinitions="40,*,40"
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
-        
+
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="textscreenbg.jpg"/>
+
         <Image Aspect="Fill"
                HeightRequest="150"
                WidthRequest="200"
-               Grid.Column="0"
+               Grid.Column="1"
                Grid.Row="0"
                 Source="sidechicks.PNG"
             
                                        />
-        <ScrollView Grid.Column="0"
+        <ScrollView Grid.Column="1"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="0">
                 <Label Text="Username"/>
@@ -59,7 +68,7 @@
                 
 
 
-                <Button Text="change user" 
+                <Button Text="Register" 
                     CommandParameter="{Binding User}"
                     Command="{Binding AddUserCommand}"
                     IsEnabled="{Binding IsNotBusy}"
@@ -68,6 +77,14 @@
                     Style="{StaticResource ButtonOutline}"
                     Margin="8"/>
 
+                <Button Text="Register" 
+                    CommandParameter="{Binding User}"
+                    Command="{Binding AddUserCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="8"/>
 
             </VerticalStackLayout>
 

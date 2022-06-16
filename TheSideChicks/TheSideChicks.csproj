@@ -33,13 +33,15 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" IsAppIcon="true" Color="orange" />
-		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\sidechicks.png" color="orange"/>
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" IsAppIcon="true" Color="orange" Fill="AspectFil" />
+	
 
+		<!-- Splash Screen -->
+
+		<MauiSplashScreen Include="Resources\Splash\punksnotdead.svg" color="black" />
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\sidechicks.png"/>
+		<MauiImage Update="Resources\Images\punksnotdead.svg" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -58,8 +60,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\sidechicks.PNG" />
+	  <MauiImage Remove="Resources\Images\punksnotdead.jpg" />
+	  <MauiImage Remove="Resources\Images\punksnotdead.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\background.jpg" />
+	  <None Remove="Resources\Images\background2.jpg" />
+	  <None Remove="Resources\Images\login2.jpg" />
+	  <None Remove="Resources\Images\news.jpg" />
+	  <None Remove="Resources\Images\punksnotdead.svg" />
+	  <None Remove="Resources\Images\sidechicks.png" />
 	  <None Remove="Resources\Images\skull.svg" />
+	  <None Remove="Resources\Images\textscreenbg.png" />
 	</ItemGroup>
 
 	<ItemGroup>

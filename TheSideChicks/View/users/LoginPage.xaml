@@ -13,40 +13,65 @@
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
-        <Image Aspect="Fill"
-               Grid.Row="1"
+
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
                Grid.ColumnSpan="3"
+               Grid.Row="0"
                Grid.RowSpan="3"
-               Source="sidechicks.svg"
-            
-                                       />
-        <Image Aspect="Fill"
+               Source="login2.jpg"/>
+
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
                HeightRequest="150"
                WidthRequest="200"
                Grid.Column="1"
                Grid.Row="0"
-               Source="skull.svg"
+               Source="sidechicks.png"
             
                                        />
         <ScrollView Grid.Column="1"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="1">
-              
 
-                    
-                   
-                    <Label Text="Username"
-                       Style="{StaticResource LargeLabel }"/>
-                    <Entry Placeholder="username"
                        
-                       Text="{Binding username}"
-                       />
-
-                <Label Text="Password"
+                            <Grid Padding="5">
+                    <Frame MinimumHeightRequest="50" Style="{StaticResource CardView}"
+                              MinimumWidthRequest="350"
+                           >
+                                       
+                       <Label Text="Username"
                        Style="{StaticResource LargeLabel }"/>
-                <Entry Placeholder="TheSideChicks1!"
+                        <Entry Placeholder="username"
+                           Text="{Binding username}"
+                           />
+
+
+                    </Frame>
+                            </Grid>
+
+                <Grid Padding="5">
+                    <Frame MinimumHeightRequest="50" Style="{StaticResource CardView}"
+                              MinimumWidthRequest="200"
+                           >
+                        
+                        <Label Text="Password"
+                       Style="{StaticResource LargeLabel }"/>
+                        <Entry Placeholder="Password!"
                        IsPassword="True"
                        Text="{Binding password}"/>
+
+
+                    </Frame>
+                </Grid>
+
+
+
+
+                
 
                 <Button Text="Log in" 
                 Command="{Binding LogIn}"
@@ -54,7 +79,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
+                Margin="20"/>
 
                 <Button Text="Register" 
                 Command="{Binding Register}"
@@ -62,7 +87,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
+                Margin="0"/>
 
 
 

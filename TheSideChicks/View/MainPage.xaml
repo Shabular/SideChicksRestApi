@@ -14,21 +14,18 @@
         RowSpacing="0">
 
         <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
                Grid.ColumnSpan="3"
+               Grid.Column="0"
                Grid.RowSpan="3"
+               Grid.Row="0"
                Source="skull.svg"
             
                                        />
 
 
-        <VerticalStackLayout IsVisible="{Binding ShowsNotFilled}"
-                                    Grid.ColumnSpan="3"
-                                    Padding="10">
-            <Label Style="{StaticResource LargeLabel}" Text="Welcome to the SideChicks " />
-            <Label Style="{StaticResource LargeLabel}" Text="To see our upcomming shows click here" />
-            
 
-        </VerticalStackLayout>
         <CollectionView
             Grid.ColumnSpan="3"
             ItemsSource="{Binding Shows}"
@@ -78,7 +75,7 @@
                            IsRunning="{Binding IsBusy}"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
+                           Grid.RowSpan="3"
+                           Grid.ColumnSpan="3"/>
     </Grid>
 </ContentPage>

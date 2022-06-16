@@ -16,6 +16,14 @@
 
     <ContentPage Title="Booking">
         <Grid >
+            <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="background.jpg"/>
             <VerticalStackLayout>
                 <Button Text="Book us now" 
                 Command="{Binding PickLocationCommand}"
@@ -49,6 +57,14 @@
 
     <ContentPage Title="Managment">
         <Grid>
+            <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="background.jpg"/>
             <VerticalStackLayout>
                 <Button Text="User management" 
                 Command="{Binding GetUsersCommand}"
@@ -74,32 +90,41 @@
     </ContentPage>
 
     <ContentPage Title="About the band">
-        <VerticalStackLayout>
-            <Button
-                Text="add news" 
-                IsVisible="{Binding isAdmin}"
-                Command="{Binding GoToNewsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="2"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-            <Button Text="Show News" 
-                Command="{Binding GetNewsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="2"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-            <Button Text="About the band" 
-                Command="{Binding GoBandInfoCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="2"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-        </VerticalStackLayout>
-       
+        <Grid>
+            <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="background.jpg"/>
+                <VerticalStackLayout>
+                    <Button
+                        Text="add news" 
+                        IsVisible="{Binding isAdmin}"
+                        Command="{Binding GoToNewsCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Style="{StaticResource ButtonOutline}"
+                        Margin="8"/>
+                    <Button Text="Show News" 
+                        Command="{Binding GetNewsCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Style="{StaticResource ButtonOutline}"
+                        Margin="8"/>
+                    <Button Text="About the band" 
+                        Command="{Binding GoBandInfoCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Style="{StaticResource ButtonOutline}"
+                        Margin="8"/>
+                </VerticalStackLayout>
+            </Grid>
     </ContentPage>
 
 

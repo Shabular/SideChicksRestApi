@@ -8,10 +8,21 @@
                 Title="{Binding Title}">
     <Grid
         
-        ColumnDefinitions="*,*,*,*,*"
+        ColumnDefinitions="20,*,20"
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
+
+
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="textscreenbg.jpg"/>
+
         <Image Aspect="Fill"
                HeightRequest="150"
                WidthRequest="200"
@@ -72,14 +83,24 @@
                         Style="{StaticResource ButtonOutline}"
                         Margin="8"/>
 
+                <Button Text="go back"
+                        CommandParameter="{Binding User}"
+                    Command="{Binding GoBackCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="8"/>
+                
                 <Button Text="Delete User"
                         CommandParameter="{Binding User}"
                     Command="{Binding DeleteUserCommand}"
                     IsEnabled="{Binding IsNotBusy}"
-                    Grid.Row="1"
-                    Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    BackgroundColor="red"
                     Style="{StaticResource ButtonOutline}"
-                    Margin="8"/>
+                    Margin="50"/>
 
             </VerticalStackLayout>
 

@@ -182,6 +182,13 @@ namespace TheSideChicks.ViewModels
                         return;
                     }
 
+
+                    Preferences.Set("username", user.username);
+                    Preferences.Set("isAdmin", user.isadmin);
+                    Preferences.Set("userId", user.id);
+                    Preferences.Set("userEmail", user.email);
+                    Preferences.Set("isLoggedIn", true);
+
                     await Shell.Current.GoToAsync(nameof(MembersPage));
                 }
                     

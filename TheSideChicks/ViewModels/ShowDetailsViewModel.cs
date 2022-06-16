@@ -75,12 +75,7 @@ namespace TheSideChicks.ViewModels
             showtime.location = await locationService.GetLocationById(show.locationId);
 
 
-            await Shell.Current.GoToAsync($"{nameof(ManageBookingPage)}", true,
-
-                new Dictionary<string, object>
-                {
-                    { "ShowTime", showtime }
-                });
+            await Shell.Current.GoToAsync($"{nameof(MembersPage)}");
         }
         
         [ICommand]
