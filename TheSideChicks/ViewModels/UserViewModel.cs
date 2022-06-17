@@ -273,8 +273,8 @@ namespace TheSideChicks.ViewModels
                                         { "LocationsList", userLocations }
                        });
                 }
-
-               
+                await Shell.Current.DisplayAlert("Not there jet!", $"Please ad a location first", "OK");
+                await Shell.Current.GoToAsync(nameof(AddLocationPage));
 
             }
             catch
