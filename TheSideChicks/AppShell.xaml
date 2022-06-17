@@ -28,9 +28,11 @@
 
 
 
-    <TabBar IsVisible="{Binding isNotLogedIn}">
+    <TabBar IsVisible="{Binding isNotLogedIn}"
+            
+            >
         <Tab Title="Shows"
-             IsVisible="{Binding isLoggedIn}">
+             >
             <ShellContent ContentTemplate="{DataTemplate view:MainPage}" />
         </Tab>
         <Tab Title="News">

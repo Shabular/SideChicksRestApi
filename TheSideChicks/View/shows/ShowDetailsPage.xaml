@@ -65,13 +65,26 @@
                 </VerticalStackLayout>
             </Grid>
 
-            <Button Text="Go Back"
+            <VerticalStackLayout
+                Padding="70">
+                <Button Text="Go Back"
                     Style="{StaticResource ButtonOutline}"
-                        Command="{Binding GoBackCommand}" />
-                
-            <Button Text="Navigate"
+                        Command="{Binding GoBackCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="5"/>
+
+                <Button Text="Navigate"
                     Style="{StaticResource ButtonOutline}"
-                        Command="{Binding GetLocationShowsCommand}" />
+                        Command="{Binding GetLocationShowsCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="5"/>
+
+            </VerticalStackLayout>
+            
 
 
         </VerticalStackLayout>

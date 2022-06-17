@@ -10,19 +10,28 @@
 
     <Grid
         
-        ColumnDefinitions="*,*"
+        ColumnDefinitions="20,*,20"
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
-        <Image Aspect="Fill"
-               HeightRequest="150"
-               WidthRequest="200"
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
                Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+
+               Source="textscreenbg.jpg"/>
+        <Image Aspect="AspectFill"
+               Margin="40"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
                Grid.Row="0"
                Source="sidechicks.PNG"
             
                                        />
-        <ScrollView Grid.Column="0"
+        <ScrollView Grid.Column="1"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="0">
 
@@ -43,36 +52,36 @@
                 <Entry Placeholder="390.27"
                        Text="{Binding fee}"/>
 
+                <Label Text="Tell the world about your venue or event"/>
 
+                <Entry Placeholder="Tell the visitors aubout your event"
+                               
+                               HeightRequest="150"
+                               Text="{Binding details}"/>
 
                 <Button Text="Post Booking" 
                 Command="{Binding AddShow}"
                 IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
+                Margin="25"/>
+
+                <Button Text="Post Booking" 
+                Command="{Binding AddShow}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="25" />
+
+
+
+
 
             </VerticalStackLayout>
 
         </ScrollView>
-        <ScrollView Grid.Column="1"
-                    Grid.RowSpan="2">
-
-            <VerticalStackLayout    Padding="10">
-
-                <Label Text="Tell the world about your venue or event"/>
-
-                <Entry Placeholder="Tell the visitors aubout your event"
-                               WidthRequest="300"
-                               HeightRequest="600"
-                               Text="{Binding details}"/>
-                
-            </VerticalStackLayout>
-
-        </ScrollView>
-
-
         
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"

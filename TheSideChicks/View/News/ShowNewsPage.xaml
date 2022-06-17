@@ -13,11 +13,20 @@
         RowDefinitions="*,Auto"
         RowSpacing="0">
 
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.ColumnSpan="3"
+               Grid.Column="0"
+               Grid.RowSpan="3"
+               Grid.Row="0"
+               Source="news.png"
+            
+                                       />
         <VerticalStackLayout IsVisible="{Binding NewsNotFilled}"
                                     Grid.ColumnSpan="3"
                                     Padding="10">
-            <Label Style="{StaticResource LargeLabel}" Text="Welcome to the SideChicks " />
-            <Label Style="{StaticResource LargeLabel}" Text="If this screen is not filled with nes try pushing the button in the screen" />
+
 
 
         </VerticalStackLayout>

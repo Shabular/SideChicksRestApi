@@ -116,6 +116,16 @@ namespace SideChicksRestApi.Controllers;
                     
                 };
                 context.Add(user);
+                user = new User
+                {
+                    UserName    = "user",
+                    FirstName   = "user",
+                    Password    = "User01!",
+                    Email       = "user@sidechicks.nl",
+                    IsAdmin     = false
+                    
+                };
+                context.Add(user);
                 context.SaveChangesAsync();
             }
             catch

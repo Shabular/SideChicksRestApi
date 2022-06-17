@@ -13,6 +13,14 @@
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="background2.jpg"/>
         <CollectionView
             Grid.ColumnSpan="3"
             ItemsSource="{Binding LocationsList}"

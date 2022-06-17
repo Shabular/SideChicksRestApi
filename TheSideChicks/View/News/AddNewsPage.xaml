@@ -11,10 +11,21 @@
 
     <Grid
         
-        ColumnDefinitions="*,*"
+        ColumnDefinitions="20,*,20"
         ColumnSpacing="5"
         RowDefinitions="200,*,Auto"
         RowSpacing="0">
+
+        <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Source="textscreenbg.jpg"/>
+        
+        
         <Image Aspect="Fill"
                HeightRequest="150"
                WidthRequest="200"
@@ -24,9 +35,9 @@
                Source="{Binding bandLogo}"
             
                                        />
-        <ScrollView Grid.Column="0"
+        <ScrollView Grid.Column="1"
                     Grid.Row="1">
-            <VerticalStackLayout Grid.Column="0">
+            <VerticalStackLayout Grid.Column="1">
                 <Label Text="Venue name"/>
                 <Entry Placeholder="Title"
                        Text="{Binding News.title}"
@@ -37,18 +48,7 @@
                        Text="{Binding News.details}"/>
 
 
-
-            </VerticalStackLayout>
-
-        </ScrollView>
-        <ScrollView Grid.Column="1"
-                    Grid.Row="1">
-
-            <VerticalStackLayout    Padding="10">
-
-
-                <Label Text="Please supply a picture"/>
-                <Button Text="Upload a picture" 
+                <Button Text="Take a picture" 
                 Command="{Binding TakePhotoCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 VerticalOptions="End"
@@ -66,7 +66,7 @@
         </ScrollView>
         <ScrollView Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="2">
+                    Grid.Row="3">
 
             <VerticalStackLayout    Padding="10">
 
