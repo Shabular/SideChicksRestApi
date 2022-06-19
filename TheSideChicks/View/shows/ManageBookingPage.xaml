@@ -42,13 +42,31 @@
 
                     <Label Text="{Binding ShowTime.show.accepted, StringFormat='accepted: {0}'}"
                        Style="{StaticResource LargeLabel}"/>
-                    
-                    
+
+
+                    <Label Padding="10"
+                           Style="{StaticResource LargeLabel}"
+                            Text="{Binding ShowTime.show.fee, StringFormat='offered fee: {0}'}"/>
 
 
                     <Label Padding="10"
                            Style="{StaticResource LargeLabel}"
                             Text="{Binding ShowTime.show.details, StringFormat='Show details: {0}'}"/>
+
+
+
+                    <Label Padding="10"
+                           Style="{StaticResource LargeLabel}"
+                            Text="{Binding ShowTime.location.city, StringFormat='offered fee: {0}'}"/>
+
+
+                    <Label Padding="10"
+                           Style="{StaticResource LargeLabel}"
+                            Text="{Binding ShowTime.location.street, StringFormat='address: {0} {1}'}"/>
+                    <Label Padding="10"
+                           Style="{StaticResource LargeLabel}"
+                            Text="{Binding ShowTime.location.number}"/>
+
                 </VerticalStackLayout>
 
 

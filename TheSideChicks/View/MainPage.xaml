@@ -75,7 +75,7 @@
                            IsRunning="{Binding IsBusy}"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="3"
-                           Grid.ColumnSpan="3"/>
+                           Grid.RowSpan="4"
+                           Grid.ColumnSpan="4"/>
     </Grid>
 </ContentPage>

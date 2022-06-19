@@ -8,14 +8,56 @@
              Title="Band Info">
     
     <StackLayout>
+
+        <Image  Aspect="AspectFill"
+                Source="theband.jpg"
+                WidthRequest="300"
+                HeightRequest="300"
+                Margin="20"/>
+
         <Image Aspect="AspectFill"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="CenterAndExpand"
                Grid.Column="0"
                Grid.ColumnSpan="3"
                Grid.Row="0"
-               Grid.RowSpan="3"
+               Grid.RowSpan="4"
                Source="background2.jpg"/>
+
+        
+        <Grid Padding="30">
+            <Frame HeightRequest="190" Style="{StaticResource CardView}">
+                <Grid Padding="0" ColumnDefinitions="50,*,*">
+                
+                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                        <Label Style="{StaticResource MediumLabel}" Text="Zang" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Vick / Ian" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Gitaar" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Dave / Willem" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Bass" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Sjors" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Drums" />
+                        <Label Style="{StaticResource MediumLabel}" Text="Bart" />
+
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                                    Grid.Column="2"
+                                    Padding="10">
+                    <Label Style="{StaticResource MediumLabel}" Text="Punk covers" />
+                    <Label Style="{StaticResource MediumLabel}" Text="Exploited" />
+                    <Label Style="{StaticResource MediumLabel}" Text="Bad Regligion" />
+                    <Label Style="{StaticResource MediumLabel}" Text="Pennywise" />
+                    <Label Style="{StaticResource MediumLabel}" Text="The Ramones" />
+                    <Label Style="{StaticResource MediumLabel}" Text="Sick of it all" />
+                    <Label Style="{StaticResource MediumLabel}" Text="and more" />
+
+
+                    </VerticalStackLayout>
+                </Grid>
+        </Frame>
+        </Grid>
 
 
         <Button Text="website" 

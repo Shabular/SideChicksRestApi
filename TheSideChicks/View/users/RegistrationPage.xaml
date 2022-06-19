@@ -77,9 +77,8 @@
                     Style="{StaticResource ButtonOutline}"
                     Margin="8"/>
 
-                <Button Text="Register" 
-                    CommandParameter="{Binding User}"
-                    Command="{Binding AddUserCommand}"
+                <Button Text="Go back" 
+                    Command="{Binding GoBackCommand}"
                     IsEnabled="{Binding IsNotBusy}"
                     Grid.Row="1"
                     Grid.Column="2"

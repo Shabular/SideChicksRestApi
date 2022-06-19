@@ -40,10 +40,12 @@
                     <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
 
-                    <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}'}"
+                    <Label Text="{Binding ShowTime.location.name, StringFormat='Location: {0}
+                        ' }"
                        Style="{StaticResource MediumLabel}"/>
 
-                    <Label Text="{Binding ShowTime.show.name, StringFormat='Location: {0}'}"
+                    <Label Text="
+                           "
                        Style="{StaticResource MediumLabel}"/>
 
                     <Label Text="{Binding ShowTime.location.street, StringFormat='Adres: {0}'}"

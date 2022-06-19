@@ -73,7 +73,7 @@
                     Style="{StaticResource ButtonOutline}"
                     Margin="8"/>
 
-                <Button Text="{Binding User.isadmin, StringFormat='is Admin = {0}'}"
+                <Button Text="{Binding User.isadmin, StringFormat='Admin = {0}'}"
                         IsVisible="{Binding isadmin}"
                         CommandParameter="{Binding User}"
                         Command="{Binding AddAssAdminCommand}"

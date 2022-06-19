@@ -96,10 +96,12 @@ namespace TheSideChicks.ViewModels
         }
 
         [ICommand]
-        async void UpdateUser()
+        async void UpdateUser(User user)
         {
             if (IsBusy)
                 return;
+
+
 
 
             try
@@ -118,7 +120,7 @@ namespace TheSideChicks.ViewModels
         }
 
         [ICommand]
-        async void AddAssAdmin()
+        async void AddAssAdmin(User user)
         {
             if (IsBusy)
                 return;
@@ -129,7 +131,7 @@ namespace TheSideChicks.ViewModels
 
             try
             {
-                UpdateUser();
+                UpdateUser(user);
             }
             catch (Exception ex)
             {
