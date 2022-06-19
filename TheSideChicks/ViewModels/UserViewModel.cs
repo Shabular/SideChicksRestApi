@@ -176,9 +176,9 @@ namespace TheSideChicks.ViewModels
                     }
             }
             if (showsViewModel.Shows.Count <= 0)
-            {
-                await Shell.Current.DisplayAlert("Error!", $"There are no pending shows", "OK");
-                return;
+                {
+                    await Shell.Current.DisplayAlert("Error!", $"There are no accepted shows for this account..... jet", "OK");
+                    return;
             }
 
              await Shell.Current.GoToAsync(nameof(ShowManagementPage), true,
@@ -272,6 +272,7 @@ namespace TheSideChicks.ViewModels
                        {
                                         { "LocationsList", userLocations }
                        });
+                    return;
                 }
                 await Shell.Current.DisplayAlert("Not there jet!", $"Please ad a location first", "OK");
                 await Shell.Current.GoToAsync(nameof(AddLocationPage));

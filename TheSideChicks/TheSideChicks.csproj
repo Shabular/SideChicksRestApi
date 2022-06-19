@@ -33,12 +33,12 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" IsAppIcon="true" Color="orange" Fill="AspectFil" />
+		<MauiIcon Include="Resources\AppIcon\skull.svg" ForegroundFile="Resources\AppIcon\skull.svg" IsAppIcon="true" Color="orange" Fill="AspectFil" />
 	
 
 		<!-- Splash Screen -->
 
-		<MauiSplashScreen Include="Resources\Splash\punksnotdead.svg" color="black" />
+		<MauiSplashScreen Include="Resources\Splash\punksnotdead.svg" color="orange" />
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\punksnotdead.svg" />
@@ -69,10 +69,14 @@
 	  <None Remove="Resources\Images\background2.jpg" />
 	  <None Remove="Resources\Images\login2.jpg" />
 	  <None Remove="Resources\Images\news.jpg" />
+	  <None Remove="Resources\Images\orangekull.jpg" />
+	  <None Remove="Resources\Images\orangekull.svg" />
 	  <None Remove="Resources\Images\punksnotdead.svg" />
 	  <None Remove="Resources\Images\sidechicks.png" />
 	  <None Remove="Resources\Images\skull.svg" />
+	  <None Remove="Resources\Images\sskull.svg" />
 	  <None Remove="Resources\Images\textscreenbg.png" />
+	  <None Remove="Resources\Images\theband.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

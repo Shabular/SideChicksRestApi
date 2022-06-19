@@ -113,6 +113,15 @@ namespace SideChicksRestApi.Controllers
                     Image = "..\\Images\\sidechicks.png"
                 };
                 context.Add(newsItem);
+                
+                newsItem = new News
+                {
+                    Userid = adminUser.Id,
+                    Title = "There will be news",
+                    Details = "we might be posting soon",
+                    Image = "..\\Images\\smallskull.png"
+                };
+                context.Add(newsItem);
                 context.SaveChangesAsync();
                 
             }

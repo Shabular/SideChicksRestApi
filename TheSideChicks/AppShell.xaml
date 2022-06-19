@@ -17,7 +17,7 @@
                 <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkBackground}, Light={StaticResource Primary}}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
-                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light={StaticResource Accent}}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark={StaticResource Accent}, Light={StaticResource Accent}}" />
                 <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource ButtonsAndTitles}}" />
             </Style>
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" ApplyToDerivedTypes="True" />
@@ -32,6 +32,7 @@
             
             >
         <Tab Title="Shows"
+             Icon="orangeskull.svg"
              >
             <ShellContent ContentTemplate="{DataTemplate view:MainPage}" />
         </Tab>
