@@ -6,7 +6,7 @@
                 x:DataType="viewmodel:UserManagementViewModel"  
                 x:Class="TheSideChicks.View.RegistrationPage"
                 
-                Title="{Binding Title}">
+                Title="Register now">
     <Grid
         
         ColumnDefinitions="40,*,40"
