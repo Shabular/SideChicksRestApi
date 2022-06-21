@@ -28,7 +28,7 @@
 
     <ItemGroup>
       <Content Include="Images\sidechicks.png" />
-      <Content Include="Images\smallskull.jpg" />
+      <Content Include="Images\smallskull.png" />
     </ItemGroup>
 
 </Project>

@@ -83,6 +83,9 @@ namespace SideChicksRestApi.Controllers
                     var userList = context.Users.ToList();
                     var adminUser = userList.Find(u => u.UserName is "admin");
                     var user = userList.Find(u => u.UserName is "user");
+
+                    var locationList = new List<Location>();
+                    
                     var location = new Location
                     {
                         UserId  = adminUser.Id,
@@ -95,12 +98,13 @@ namespace SideChicksRestApi.Controllers
                         PhoneNumber = 0654737288,
                         Email   = adminUser.Email
                     };
-                    context.Add(location);
+                    locationList.Add(location);
+                    
                     location = new Location
                     {
                         UserId  = user.Id,
                         Name    = "Mad Molly's Irish Pub",
-                        Owner   = $"{adminUser.FirstName} {adminUser.LastName}",
+                        Owner   = $"{user.FirstName} {user.LastName}",
                         City    = "Breda",
                         Street  = "schoolstraat",
                         Number  = 6,
@@ -108,8 +112,9 @@ namespace SideChicksRestApi.Controllers
                         PhoneNumber = 0637827388,
                         Email   = user.Email
                     };
-                    context.Add(location);
-                    context.SaveChangesAsync();
+                    locationList.Add(location);
+                    context.Locations.AddRange(locationList);
+                    context.SaveChanges();
                 
             }
             catch

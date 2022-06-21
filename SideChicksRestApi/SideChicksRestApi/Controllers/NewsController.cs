@@ -102,9 +102,12 @@ namespace SideChicksRestApi.Controllers
                 var userList = context.Users.ToList();
                 if (userList.Count == 0)
                 {
-                    
+                    UserController.SeedUsers(context);
+                    userList = context.Users.ToList();
                 }
                 var adminUser = userList.Find(u => u.UserName is "admin");
+
+                var newsList = new List<News>();
                 var newsItem = new News
                 {
                     Userid = adminUser.Id,
@@ -112,17 +115,18 @@ namespace SideChicksRestApi.Controllers
                     Details = "No news jet, this will be posted one day",
                     Image = "..\\Images\\sidechicks.png"
                 };
-                context.Add(newsItem);
+                newsList.Add(newsItem);
                 
                 newsItem = new News
                 {
                     Userid = adminUser.Id,
                     Title = "There will be news",
                     Details = "we might be posting soon",
-                    Image = "..\\Images\\smallskull.png"
+                    Image = "..\\Images\\sidechicks.png"
                 };
-                context.Add(newsItem);
-                context.SaveChangesAsync();
+                newsList.Add(newsItem);
+                context.News.AddRange(newsList);
+                context.SaveChanges();
                 
             }
             catch

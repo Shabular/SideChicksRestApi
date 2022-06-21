@@ -104,8 +104,6 @@ namespace SideChicksRestApi.Controllers;
 
             try
             {
-                userList = context.Users.ToList();
-                var admin = userList.Find(u => u.UserName == "admin");
                 var user = new User
                 {
                     UserName    = "admin",
@@ -115,7 +113,7 @@ namespace SideChicksRestApi.Controllers;
                     IsAdmin     = true
                     
                 };
-                context.Add(user);
+                userList.Add(user);
                 user = new User
                 {
                     UserName    = "user",
@@ -125,18 +123,15 @@ namespace SideChicksRestApi.Controllers;
                     IsAdmin     = false
                     
                 };
-                context.Add(user);
-                context.SaveChangesAsync();
+                userList.Add(user);
+                context.Users.AddRange(userList);
+                context.SaveChanges();
             }
             catch
             {
                 Console.WriteLine("Seeding failed");
-
-
-
             }
 
-            
             return true;
         }
         
