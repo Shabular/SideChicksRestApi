@@ -8,7 +8,9 @@
              Title="{Binding Title}">
 
     <ScrollView>
-            <VerticalStackLayout>
+        
+
+        <VerticalStackLayout>
                 <Grid ColumnDefinitions="*,Auto,*"
                       Grid.Row="1"
                       RowDefinitions="160, Auto">
@@ -34,8 +36,17 @@
                            Source="{Binding ShowTime.show.image}"/>
                     </Frame>
                 </Grid>
-            <Grid Grid.Row="2"
-                      >
+            <Grid Grid.Row="2">
+                <Image Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+                       MaximumHeightRequest="550"
+                Margin="0"
+               Grid.ColumnSpan="3"
+               Grid.Column="0"
+               Grid.RowSpan="3"
+               Grid.Row="0"
+               Source="bgdetails.png"/>
                 <VerticalStackLayout Padding="5" Spacing="5" Grid.Column="0">
                     <Label Text="{Binding ShowTime.show.name, StringFormat='Venue: {0}'}"
                        Style="{StaticResource MediumLabel}"/>
@@ -64,28 +75,31 @@
                     <Label Text="{Binding ShowTime.show.details}"
                            Padding="10"
                            Style="{StaticResource LargeLabel}"/>
+                    
+                
+                    <Button Text="Go Back"
+
+                            Style="{StaticResource ButtonOutline}"
+                            Command="{Binding GoBackCommand}"
+                            IsEnabled="{Binding IsNotBusy}"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Margin="40"/>
+
+                    <Button Text="Navigate"
+
+                            Style="{StaticResource ButtonOutline}"
+                            Command="{Binding GetLocationShowsCommand}"
+                            IsEnabled="{Binding IsNotBusy}"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Margin="40"/>
+
+
                 </VerticalStackLayout>
             </Grid>
 
-            <VerticalStackLayout
-                Padding="70">
-                <Button Text="Go Back"
-                    Style="{StaticResource ButtonOutline}"
-                        Command="{Binding GoBackCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="3"
-                Grid.Column="0"
-                Margin="5"/>
-
-                <Button Text="Navigate"
-                    Style="{StaticResource ButtonOutline}"
-                        Command="{Binding GetLocationShowsCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="3"
-                Grid.Column="0"
-                Margin="5"/>
-
-            </VerticalStackLayout>
+            
             
 
 

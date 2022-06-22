@@ -74,7 +74,7 @@
                     Margin="8"/>
 
                 <Button Text="{Binding User.isadmin, StringFormat='Admin = {0}'}"
-                        IsVisible="{Binding isadmin}"
+                        IsVisible="{Binding isAdmin}"
                         CommandParameter="{Binding User}"
                         Command="{Binding AddAssAdminCommand}"
                         IsEnabled="{Binding IsNotBusy}"

@@ -38,13 +38,13 @@
         <ScrollView Grid.Column="1"
                     Grid.Row="1">
             <VerticalStackLayout Grid.Column="1">
-                <Label Text="Venue name"/>
+                <Label Text="Title of news"/>
                 <Entry Placeholder="Title"
                        Text="{Binding News.title}"
                        />
 
-                <Label Text="Owners name"/>
-                <Entry Placeholder="Who is booking"
+                <Label Text="Details"/>
+                <Entry Placeholder="Whats going on"
                        Text="{Binding News.details}"/>
 
 
