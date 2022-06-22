@@ -9,6 +9,8 @@ public class ImageControllerTest
 
     private string sidechicksBase64StringStart =
         "iVBORw0KGgoAAAANSUhEUgAABPsAAANZCAYAAAB5lztcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP";
+
+    private string imageName = "sidechicks";
     
     bool assertion = false;
     
@@ -29,6 +31,7 @@ public class ImageControllerTest
         Assert.IsTrue(assertion);
     }
 
+   
     
     
 }

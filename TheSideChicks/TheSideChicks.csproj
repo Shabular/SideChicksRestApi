@@ -67,6 +67,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\background.jpg" />
 	  <None Remove="Resources\Images\background2.jpg" />
+	  <None Remove="Resources\Images\bgdetails.jpg" />
 	  <None Remove="Resources\Images\login2.jpg" />
 	  <None Remove="Resources\Images\news.jpg" />
 	  <None Remove="Resources\Images\orangekull.jpg" />

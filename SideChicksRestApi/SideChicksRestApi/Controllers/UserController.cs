@@ -17,8 +17,7 @@ namespace SideChicksRestApi.Controllers;
         public UserController(ApplicationDbContext context)
         {
             _context = context;
-            var userList = context.Locations.ToList();
-            if (userList.Count == 0)
+            if (context.Users.ToList().Count() == 0)
             {
                 SeedUsers(_context);
             }
