@@ -7,7 +7,10 @@ namespace TheSideChicksTests
         [Fact]
         public void TestisDutchPostalCode()
         {
-            AddressHelper.isDutchPostalCode("4872RE");
+            string postalcode = "4872RE";
+            var returnstring = AddressHelper.isDutchPostalCode(postalcode);
+
+            Assert.Equal(postalcode, returnstring);
         }
     }
 }
