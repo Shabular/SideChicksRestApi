@@ -61,7 +61,10 @@ namespace SideChicksRestApi.Controllers
         {
             if (id != show.Id) return BadRequest();
 
-            _context.Entry(show).State = EntityState.Modified;
+            var showOld = await _context.Shows.FindAsync(id);
+            _context.Shows.Remove(showOld);
+            _context.Shows.Add(show);
+            
             await _context.SaveChangesAsync();
             return NoContent();
 
